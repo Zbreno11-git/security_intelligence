@@ -1,0 +1,1 @@
+{"errors":[{"message":"Não é possível consultar dados anteriores a 2026-08-12 18:09:49. Consulte no máximo os últimos 3 meses.","locations":[{"line":2,"column":3}],"path":["historic"],"extensions":{"code":"BAD_REQUEST"}}],"data":null}

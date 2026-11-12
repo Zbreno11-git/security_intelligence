@@ -1,0 +1,16 @@
+{
+  "source_url": "https://www.ssp.rs.gov.br/indicadores-criminais",
+  "final_url": "https://www.ssp.rs.gov.br/indicadores-criminais",
+  "method": "GET",
+  "retrieved_at_utc": "2026-11-12T21:10:09.636853+00:00",
+  "http_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length": 93758,
+  "sha256": "132841f59ed3e6d2b1c8612faad2c3d0b105544b559741e98ee7635c905f0d4c",
+  "elapsed_s": 0.876,
+  "redirects": [],
+  "saved_to": "data/raw/ssp/2026-11-12/indicadores_page.html",
+  "request_body_sha256": null,
+  "attempts": 1,
+  "transient_errors": []
+}

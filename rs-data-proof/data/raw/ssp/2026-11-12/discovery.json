@@ -1,0 +1,159 @@
+{
+  "source_page": "https://ssp.rs.gov.br/dados-abertos",
+  "page_sha256": "961b9402c076fd496698d0de044d764ca9964e6bdeff4fccdc613ef87ecc7d33",
+  "candidates": {
+    "mensal": [
+      {
+        "text": "2026 (janeiro a setembro) (.zip 11,94MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+        "years": [
+          2026
+        ]
+      },
+      {
+        "text": "2025 (janeiro a dezembro) (.zip 17,56 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112418-spj-dados-abertos-ocorrencias-jan-dez-2025-em-06-10-2026.zip",
+        "years": [
+          2025
+        ]
+      },
+      {
+        "text": "2024 (janeiro a dezembro) – atualizado em janeiro de 2026 (.zip 16,13 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202601/16132801-spj-dados-abertos-ocorrencias-jan-dez-2024-em-05-01-2026.zip",
+        "years": [
+          2024,
+          2026
+        ]
+      },
+      {
+        "text": "2023 (janeiro a dezembro) (.zip 16,42 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202501/20100119-2023-janeiro-a-dezembro.zip",
+        "years": [
+          2023
+        ]
+      },
+      {
+        "text": "2022 (de janeiro a dezembro) (.zip 15,86 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202607/09152511-spj-dados-abertos-ocorrencias-jan-dez-2022-em-23-06-2026.zip",
+        "years": [
+          2022
+        ]
+      },
+      {
+        "text": "2021 (outubro a dezembro)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202201/25080213-dados-abertos-ocorrencias-2022-01-ajustado-publicacao.csv",
+        "years": [
+          2021
+        ]
+      }
+    ],
+    "semestral": [
+      {
+        "text": "1º semestre de 2026 (.zip 606,93 KBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202608/17143354-dados-art-6o-1o-sem-2026.zip",
+        "years": [
+          2026
+        ]
+      },
+      {
+        "text": "2º semestre de 2025 (.zip 676,98 KBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202602/27153306-dados-art-6o-lei-15610-2021-2o-semestre-de-2025.zip",
+        "years": [
+          2025
+        ]
+      },
+      {
+        "text": "1º semestre de 2025 (.zip 503,12 KBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202508/15162715-dados-art-6o-lei-15610-2021-1o-semestre-de-2025.zip",
+        "years": [
+          2025
+        ]
+      },
+      {
+        "text": "2° semestre 2024 (.zip 570,34 KBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202502/17170826-2-semestre-2024.zip",
+        "years": [
+          2024
+        ]
+      },
+      {
+        "text": "1° semestre 2024 (.zip 467,82 KBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202501/20100111-1-semestre-2024.zip",
+        "years": [
+          2024
+        ]
+      },
+      {
+        "text": "2° semestre 2023 (.zip 1,04 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202408/16164322-2-semestre-2023.zip",
+        "years": [
+          2023
+        ]
+      },
+      {
+        "text": "",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202408/16164333-2-semestre-2022.zip",
+        "years": [
+          2022
+        ]
+      },
+      {
+        "text": "1° semestre 2023 (.zip 296,79 KBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202408/16164343-1-semestre-2023.zip",
+        "years": [
+          2023
+        ]
+      },
+      {
+        "text": "1° semestre 2022 (.zip 295,18 KBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202408/16164348-1-semestre-2022.zip",
+        "years": [
+          2022
+        ]
+      },
+      {
+        "text": "2° semestre 2021 (.zip 280,10 KBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202408/16164337-2-semestre-2021.zip",
+        "years": [
+          2021
+        ]
+      }
+    ],
+    "other": []
+  },
+  "chosen": {
+    "text": "2026 (janeiro a setembro) (.zip 11,94MBytes)",
+    "url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+    "years": [
+      2026
+    ]
+  },
+  "download": {
+    "source_url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+    "final_url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+    "method": "GET",
+    "retrieved_at_utc": "2026-11-12T21:09:50.154076+00:00",
+    "http_status": 200,
+    "content_type": "application/zip",
+    "content_length": 12524194,
+    "sha256": "f87306dacea2d772ba7c26b56ad313f63d556b11783dde3184fe0b6d72a9fcc3",
+    "elapsed_s": 18.951,
+    "redirects": [],
+    "saved_to": "data/raw/ssp/2026-11-12/source.zip",
+    "request_body_sha256": null,
+    "attempts": 1,
+    "transient_errors": []
+  },
+  "zip_members": [
+    {
+      "member_name_in_zip": "SPJ_DADOS_ABERTOS_OCORRÊNCIAS_JAN_SET_2026 - Em 06.10.2026.csv",
+      "utf8_name_flag": true,
+      "extracted_to": "data/raw/ssp/2026-11-12/extracted/SPJ_DADOS_ABERTOS_OCORRÊNCIAS_JAN_SET_2026 - Em 06.10.2026.csv",
+      "compressed_size": 12523898,
+      "uncompressed_size": 123388616,
+      "zip_datetime": "2026-10-16T10:55:26",
+      "crc32": "d1046538",
+      "sha256": "0e3092881679f780994d624d2889428201119ea49173d2d21e89626d4424b369"
+    }
+  ]
+}

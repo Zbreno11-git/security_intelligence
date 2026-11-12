@@ -1,0 +1,34 @@
+==========================================================
+RS OPERATIONAL DATA PROOF   2026-11-12T21:10:56Z
+==========================================================
+DEFESA CIVIL
+Stations:                         130
+Fresh:                            125
+Maintenance:                        0
+River value valid:                122
+Attention/alert/flood:        2/0/0   
+Rain > 10 mm / 24h:                 6
+Serra stations <=40km:              7
+
+SSP (2026-01-01 a 2026-09-30)
+Rows loaded:                  567,659
+Gramado:                        2,825
+Canela:                         3,355
+
+GRAMADO top categories (ocorrências registradas):
+  1. AMEACA                                   369
+  2. OUTROS CRIMES                            329
+  3. OUTRAS FRAUDES                           191
+CANELA top categories (ocorrências registradas):
+  1. AMEACA                                   469
+  2. OUTROS CRIMES                            445
+  3. ESTELIONATO                              362
+
+Data quality (RS):
+  Municipality filled       100.0%
+  Neighborhood filled        80.5%
+  Time filled               100.0%
+  Time on exact hour         38.5%
+
+RESULT: GO_WITH_CAVEATS
+==========================================================

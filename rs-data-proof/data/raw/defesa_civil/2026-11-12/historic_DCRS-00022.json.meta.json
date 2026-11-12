@@ -1,0 +1,16 @@
+{
+  "source_url": "https://redehidrometeorologica.defesacivil.rs.gov.br/graphql",
+  "final_url": "https://redehidrometeorologica.defesacivil.rs.gov.br/graphql",
+  "method": "POST",
+  "retrieved_at_utc": "2026-11-12T21:09:46.734007+00:00",
+  "http_status": 200,
+  "content_type": "application/json; charset=utf-8",
+  "content_length": 89795,
+  "sha256": "92ab6cc8c7b55b5b2371b56b8eed1f7acaa89098239d8a9fd522c5826df732d9",
+  "elapsed_s": 0.958,
+  "redirects": [],
+  "saved_to": "data/raw/defesa_civil/2026-11-12/historic_DCRS-00022.json",
+  "request_body_sha256": "e83b868d01d919211f0b19f6bc66bd114c6eb89b1c8701a0759177b64a5eec1a",
+  "attempts": 1,
+  "transient_errors": []
+}

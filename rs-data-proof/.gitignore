@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+# The extracted SSP CSV (~123 MB) exceeds GitHub's 100 MB limit. It is fully
+# reproducible from data/raw/ssp/<date>/source.zip, whose sha256 and the CSV's
+# own sha256 are recorded in discovery.json / run_manifest.json.
+data/raw/ssp/*/extracted/*.csv
+# run.log is a deliverable (root .gitignore ignores *.log)
+!reports/run.log

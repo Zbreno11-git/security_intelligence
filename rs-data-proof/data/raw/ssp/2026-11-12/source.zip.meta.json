@@ -1,0 +1,16 @@
+{
+  "source_url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+  "final_url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+  "method": "GET",
+  "retrieved_at_utc": "2026-11-12T21:09:50.154076+00:00",
+  "http_status": 200,
+  "content_type": "application/zip",
+  "content_length": 12524194,
+  "sha256": "f87306dacea2d772ba7c26b56ad313f63d556b11783dde3184fe0b6d72a9fcc3",
+  "elapsed_s": 18.951,
+  "redirects": [],
+  "saved_to": "data/raw/ssp/2026-11-12/source.zip",
+  "request_body_sha256": null,
+  "attempts": 1,
+  "transient_errors": []
+}

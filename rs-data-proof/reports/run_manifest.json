@@ -1,0 +1,233 @@
+{
+  "run_started_at": "2026-11-12T21:09:20.144888+00:00",
+  "run_finished_at": "2026-11-12T21:10:56.060270+00:00",
+  "sources": [
+    {
+      "name": "defesa_civil_tags_data",
+      "url": "https://redehidrometeorologica.defesacivil.rs.gov.br/graphql",
+      "doc": "https://sistemas.defesacivil.rs.gov.br/api-redehidrometeorologica",
+      "status": "ok"
+    },
+    {
+      "name": "ssp_microdados_art3",
+      "page": "https://ssp.rs.gov.br/dados-abertos",
+      "url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+      "status": "ok"
+    },
+    {
+      "name": "ssp_indicadores_criminais",
+      "page": "https://www.ssp.rs.gov.br/indicadores-criminais",
+      "url": "https://ssp.rs.gov.br/upload/arquivos/202611/12155941-site-geral-e-municipios-out-2026-atualizado-em-05-nov-2026-dados-cvli-publicacao.xlsx"
+    }
+  ],
+  "raw_files": [
+    {
+      "path": "data/raw/defesa_civil/2026-11-12/api_documentation.html",
+      "bytes": 46763,
+      "sha256": "737cbc03a1be0d35f49e1badb293d9dd96060eff48edca31eafb65be5feedfa1"
+    },
+    {
+      "path": "data/raw/defesa_civil/2026-11-12/historic_DCRS-00001.json",
+      "bytes": 89135,
+      "sha256": "1301933a64e47562af53ce09821cacfc6809e25745782c674eaf74901bb76e65"
+    },
+    {
+      "path": "data/raw/defesa_civil/2026-11-12/historic_DCRS-00002.json",
+      "bytes": 88891,
+      "sha256": "7d838307547257f498a66380a9aa7a235240dd0826feaea548d494d582dc706a"
+    },
+    {
+      "path": "data/raw/defesa_civil/2026-11-12/historic_DCRS-00004.json",
+      "bytes": 90119,
+      "sha256": "ae490a3635c9eaf652bdadc8e695458e2a94c46b902bb34d4cd5840f9742e1c5"
+    },
+    {
+      "path": "data/raw/defesa_civil/2026-11-12/historic_DCRS-00022.json",
+      "bytes": 89795,
+      "sha256": "92ab6cc8c7b55b5b2371b56b8eed1f7acaa89098239d8a9fd522c5826df732d9"
+    },
+    {
+      "path": "data/raw/defesa_civil/2026-11-12/historic_DCRS-00110.json",
+      "bytes": 89241,
+      "sha256": "1b2549a5f31c1e4ae4bfb1608549f3b1627ad4e62b2225ddc22182b1258c815b"
+    },
+    {
+      "path": "data/raw/defesa_civil/2026-11-12/probe_history_100d.json",
+      "bytes": 240,
+      "sha256": "06e83448669a8e548698c037e30055e888a2ebdd499f68b39019242cbda83fb2"
+    },
+    {
+      "path": "data/raw/defesa_civil/2026-11-12/tags_data.json",
+      "bytes": 318209,
+      "sha256": "4eb90df005bf69d19e86a96c41677dd26ae71681f9f43ed0acfc74365129d6e6"
+    },
+    {
+      "path": "data/raw/ssp/2026-11-12/dados_abertos_page.html",
+      "bytes": 87310,
+      "sha256": "961b9402c076fd496698d0de044d764ca9964e6bdeff4fccdc613ef87ecc7d33"
+    },
+    {
+      "path": "data/raw/ssp/2026-11-12/discovery.json",
+      "bytes": 5412,
+      "sha256": "4d1bacdb4fce7c41ca17031385b7444e5143fc2a47d6ae13e41d5ad6e222c00f"
+    },
+    {
+      "path": "data/raw/ssp/2026-11-12/extracted/SPJ_DADOS_ABERTOS_OCORRÊNCIAS_JAN_SET_2026 - Em 06.10.2026.csv",
+      "bytes": 123388616,
+      "sha256": "0e3092881679f780994d624d2889428201119ea49173d2d21e89626d4424b369"
+    },
+    {
+      "path": "data/raw/ssp/2026-11-12/indicadores_2026.xlsx",
+      "bytes": 419290,
+      "sha256": "6702f5df16717bb70bfeede54b6d02646093704d14bfaed7173c44af59e56c04"
+    },
+    {
+      "path": "data/raw/ssp/2026-11-12/indicadores_page.html",
+      "bytes": 93758,
+      "sha256": "132841f59ed3e6d2b1c8612faad2c3d0b105544b559741e98ee7635c905f0d4c"
+    },
+    {
+      "path": "data/raw/ssp/2026-11-12/source.zip",
+      "bytes": 12524194,
+      "sha256": "f87306dacea2d772ba7c26b56ad313f63d556b11783dde3184fe0b6d72a9fcc3"
+    }
+  ],
+  "row_counts": {
+    "defesa_civil_stations": 130,
+    "defesa_civil_history_rows": 1440,
+    "ssp_occurrences": 567659,
+    "ssp_victims": 502366,
+    "ssp_quarantine_rows": 16
+  },
+  "checks": {
+    "dc_api_accessible": {
+      "passed": true,
+      "critical": true,
+      "evidence": "HTTP 200"
+    },
+    "dc_raw_preserved_with_sha256": {
+      "passed": true,
+      "critical": true,
+      "evidence": "data/raw/defesa_civil/2026-11-12/tags_data.json"
+    },
+    "dc_official_query_unchanged": {
+      "passed": true,
+      "critical": false,
+      "evidence": {
+        "tags_data": "identical",
+        "historic": "identical"
+      }
+    },
+    "dc_station_count_as_documented": {
+      "passed": true,
+      "critical": false,
+      "evidence": "130 vs 130"
+    },
+    "dc_fresh_ge_90pct": {
+      "passed": true,
+      "critical": true,
+      "evidence": "96.2%"
+    },
+    "dc_river_value_ge_80pct": {
+      "passed": true,
+      "critical": false,
+      "evidence": "93.8%"
+    },
+    "dc_history_ge1_station_ge80pct_complete": {
+      "passed": true,
+      "critical": true,
+      "evidence": "5/5 stations"
+    },
+    "dc_serra_has_valid_river_station_within_40km": {
+      "passed": true,
+      "critical": false,
+      "evidence": "7 stations"
+    },
+    "dc_station_inside_gramado_or_canela": {
+      "passed": false,
+      "critical": false,
+      "evidence": "nenhuma estação com nome Gramado/Canela"
+    },
+    "dc_flood_thresholds_in_payload": {
+      "passed": false,
+      "critical": false,
+      "evidence": "resposta tags_data não contém cotas/limiares (só o status derivado)"
+    },
+    "ssp_download_ok": {
+      "passed": true,
+      "critical": true,
+      "evidence": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip"
+    },
+    "ssp_schema_matches_dictionary": {
+      "passed": true,
+      "critical": true,
+      "evidence": [
+        "Sequência",
+        "Data Fato",
+        "Hora Fato",
+        "Grupo Fato",
+        "Tipo Enquadramento",
+        "Tipo Fato",
+        "Municipio Fato",
+        "Local Fato",
+        "Bairro",
+        "Quantidade Vítimas",
+        "Idade Vítima",
+        "Sexo Vítima",
+        "Cor Vítima"
+      ]
+    },
+    "ssp_rows_loaded": {
+      "passed": true,
+      "critical": true,
+      "evidence": 567659
+    },
+    "ssp_gramado_ge_100_per_month": {
+      "passed": true,
+      "critical": false,
+      "evidence": "total=2825, monthly_min=273"
+    },
+    "ssp_gramado_neighborhood_cov_ge_70pct": {
+      "passed": true,
+      "critical": false,
+      "evidence": "84.25%"
+    },
+    "ssp_canela_ge_100_per_month": {
+      "passed": true,
+      "critical": false,
+      "evidence": "total=3355, monthly_min=325"
+    },
+    "ssp_canela_neighborhood_cov_ge_70pct": {
+      "passed": true,
+      "critical": false,
+      "evidence": "83.82%"
+    },
+    "ssp_lag_le_45_days": {
+      "passed": true,
+      "critical": false,
+      "evidence": "43 dias desde o fim do período coberto"
+    },
+    "ssp_has_coordinates": {
+      "passed": false,
+      "critical": false,
+      "evidence": "nenhuma coluna de latitude/longitude no arquivo art. 3º"
+    },
+    "ssp_crossval_state_within_5pct_majority": {
+      "passed": true,
+      "critical": false,
+      "evidence": "8/10 mappings within ±5%"
+    },
+    "ssp_no_critical_anomalies_gt_1pct": {
+      "passed": true,
+      "critical": true,
+      "evidence": {
+        "date_invalid": 0,
+        "date_future": 0,
+        "municipality_empty": 0,
+        "category_empty": 0
+      }
+    }
+  },
+  "errors": {},
+  "result": "GO_WITH_CAVEATS"
+}

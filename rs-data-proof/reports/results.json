@@ -1,0 +1,1338 @@
+{
+  "preflight": [
+    {
+      "url": "https://sistemas.defesacivil.rs.gov.br/api-redehidrometeorologica",
+      "ok": true,
+      "status_code": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://sistemas.defesacivil.rs.gov.br/api-redehidrometeorologica",
+      "redirects": [],
+      "bytes": 46763,
+      "elapsed_s": 1.342,
+      "tls_verified": true
+    },
+    {
+      "url": "https://ssp.rs.gov.br/dados-abertos",
+      "ok": true,
+      "status_code": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://ssp.rs.gov.br/dados-abertos",
+      "redirects": [],
+      "bytes": 87310,
+      "elapsed_s": 1.986,
+      "tls_verified": true
+    },
+    {
+      "url": "https://www.ssp.rs.gov.br/indicadores-criminais",
+      "ok": true,
+      "status_code": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://www.ssp.rs.gov.br/indicadores-criminais",
+      "redirects": [],
+      "bytes": 93758,
+      "elapsed_s": 1.745,
+      "tls_verified": true
+    },
+    {
+      "url": "https://www.ssp.rs.gov.br/dicionario-de-dados",
+      "ok": true,
+      "status_code": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://www.ssp.rs.gov.br/dicionario-de-dados",
+      "redirects": [],
+      "bytes": 88534,
+      "elapsed_s": 8.81,
+      "tls_verified": true
+    }
+  ],
+  "defesa_civil": {
+    "status": "ok",
+    "fetch": {
+      "source_url": "https://redehidrometeorologica.defesacivil.rs.gov.br/graphql",
+      "final_url": "https://redehidrometeorologica.defesacivil.rs.gov.br/graphql",
+      "method": "POST",
+      "retrieved_at_utc": "2026-11-12T21:09:34.346777+00:00",
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_length": 318209,
+      "sha256": "4eb90df005bf69d19e86a96c41677dd26ae71681f9f43ed0acfc74365129d6e6",
+      "elapsed_s": 1.759,
+      "redirects": [],
+      "saved_to": "data/raw/defesa_civil/2026-11-12/tags_data.json",
+      "request_body_sha256": "059f24eff50657511a280f5e08bd1c3b726c161062f3a33cf918a34c94bccf8a",
+      "attempts": 1,
+      "transient_errors": []
+    },
+    "proximaAtualizacaoEm": "2026-11-12T21:12:50.000Z",
+    "collected_at_utc": "2026-11-12T21:09:34.346759+00:00",
+    "query_drift": {
+      "doc_url": "https://sistemas.defesacivil.rs.gov.br/api-redehidrometeorologica",
+      "doc_reachable": true,
+      "queries": {
+        "tags_data": "identical",
+        "historic": "identical"
+      },
+      "doc_sha256": "737cbc03a1be0d35f49e1badb293d9dd96060eff48edca31eafb65be5feedfa1"
+    },
+    "quality": {
+      "total_stations": 130,
+      "station_types": {
+        "HidroMeteo": 130
+      },
+      "stations_with_river_sensor": 130,
+      "stations_with_river_level": 122,
+      "stations_with_rain_sensor": 130,
+      "stations_with_rain": 129,
+      "stations_with_lat_lon": 129,
+      "maintenance_count": 0,
+      "maintenance_percentage": 0.0,
+      "freshness_counts": {
+        "fresh": 125,
+        "delayed": 5
+      },
+      "stale_station_count": 0,
+      "stale_station_percentage": 0.0,
+      "age_minutes_median": 4.57,
+      "age_minutes_p95": 4.57,
+      "age_minutes_max": 14.57,
+      "river_level_missing_pct": 6.15,
+      "rain_1h_missing_pct": 0.77,
+      "rain_24h_missing_pct": 0.77,
+      "temperature_missing_pct": 0.0,
+      "non_homologated_river_count": 3,
+      "non_homologated_rain_count": 3,
+      "non_homologated_temp_count": 0,
+      "official_status_counts": {
+        "normal": 91,
+        "attention": 2,
+        "alert": 0,
+        "flood": 0,
+        "unavailable": 3,
+        "no_threshold": 34,
+        "no_river_alarm_data": 0
+      },
+      "technical_data_confidence_distribution": {
+        "100": 119,
+        "85": 8,
+        "80": 3
+      },
+      "duplicate_station_codes": 0,
+      "rain_negative_values": 0,
+      "rain_window_monotonic_violations": 0,
+      "missing_rio_nome": 130,
+      "missing_altitude": 130
+    },
+    "station_count_vs_documented": {
+      "observed": 130,
+      "documented": 130
+    },
+    "history": {
+      "metrics": [
+        {
+          "codigo": "DCRS-00004",
+          "reasons": {},
+          "current_river_level": 68.91,
+          "last_river_ts_utc": "2026-11-12 21:05:00+00:00",
+          "delta_10m": 0.01,
+          "delta_30m": 0.0,
+          "delta_1h": 0.0,
+          "rise_rate_per_hour": -0.0038,
+          "max_rise_1h_in_window": 0.01,
+          "max_rise_1h_at_utc": "2026-11-12 11:35:00+00:00",
+          "range_in_window_m": 0.04,
+          "rain_30m": 0.0,
+          "rain_1h": 0.0,
+          "rain_3h": 0.0,
+          "rain_24h": 0.0,
+          "max_rain_rate_mm_h_24h": 0.0,
+          "official_flood_status": "normal",
+          "data_freshness": "fresh",
+          "technical_data_confidence": 100,
+          "tags_rain_24h_mm": 0.0,
+          "tags_rain_1h_mm": 0.0,
+          "selection_reason": "nearest_to_gramado_canela",
+          "name_general": "Três Coroas",
+          "bacia": "RS - Sinos",
+          "rio_nome": null,
+          "dist_serra_km": 12.82,
+          "variables": {
+            "stationCode": "DCRS-00004",
+            "startDate": "2026-11-11 18:09:34",
+            "endDate": "2026-11-12 18:09:34",
+            "interval": "MIN_5"
+          },
+          "bytes": 90119,
+          "elapsed_s": 0.928,
+          "total_count": 288
+        },
+        {
+          "codigo": "DCRS-00001",
+          "reasons": {},
+          "current_river_level": 27.23,
+          "last_river_ts_utc": "2026-11-12 21:05:00+00:00",
+          "delta_10m": 0.0,
+          "delta_30m": -0.01,
+          "delta_1h": -0.01,
+          "rise_rate_per_hour": -0.013,
+          "max_rise_1h_in_window": 0.01,
+          "max_rise_1h_at_utc": "2026-11-12 02:25:00+00:00",
+          "range_in_window_m": 0.04,
+          "rain_30m": 0.0,
+          "rain_1h": 0.0,
+          "rain_3h": 0.0,
+          "rain_24h": 0.0,
+          "max_rain_rate_mm_h_24h": 0.0,
+          "official_flood_status": "normal",
+          "data_freshness": "fresh",
+          "technical_data_confidence": 100,
+          "tags_rain_24h_mm": 0.0,
+          "tags_rain_1h_mm": 0.0,
+          "selection_reason": "nearest_to_gramado_canela",
+          "name_general": "Igrejinha",
+          "bacia": "RS - Sinos",
+          "rio_nome": null,
+          "dist_serra_km": 23.01,
+          "variables": {
+            "stationCode": "DCRS-00001",
+            "startDate": "2026-11-11 18:09:34",
+            "endDate": "2026-11-12 18:09:34",
+            "interval": "MIN_5"
+          },
+          "bytes": 89135,
+          "elapsed_s": 0.789,
+          "total_count": 288
+        },
+        {
+          "codigo": "DCRS-00002",
+          "reasons": {},
+          "current_river_level": 20.64,
+          "last_river_ts_utc": "2026-11-12 21:05:00+00:00",
+          "delta_10m": 0.0,
+          "delta_30m": 0.0,
+          "delta_1h": 0.0,
+          "rise_rate_per_hour": -0.0,
+          "max_rise_1h_in_window": 0.01,
+          "max_rise_1h_at_utc": "2026-11-12 00:15:00+00:00",
+          "range_in_window_m": 0.02,
+          "rain_30m": 0.0,
+          "rain_1h": 0.0,
+          "rain_3h": 0.0,
+          "rain_24h": 0.0,
+          "max_rain_rate_mm_h_24h": 0.0,
+          "official_flood_status": "normal",
+          "data_freshness": "fresh",
+          "technical_data_confidence": 100,
+          "tags_rain_24h_mm": 0.0,
+          "tags_rain_1h_mm": 0.0,
+          "selection_reason": "nearest_to_gramado_canela",
+          "name_general": "Nova Hartz",
+          "bacia": "RS - Sinos",
+          "rio_nome": null,
+          "dist_serra_km": 24.01,
+          "variables": {
+            "stationCode": "DCRS-00002",
+            "startDate": "2026-11-11 18:09:34",
+            "endDate": "2026-11-12 18:09:34",
+            "interval": "MIN_5"
+          },
+          "bytes": 88891,
+          "elapsed_s": 0.721,
+          "total_count": 288
+        },
+        {
+          "codigo": "DCRS-00110",
+          "reasons": {},
+          "current_river_level": 743.45,
+          "last_river_ts_utc": "2026-11-12 21:05:00+00:00",
+          "delta_10m": 0.0,
+          "delta_30m": 0.0,
+          "delta_1h": 0.0,
+          "rise_rate_per_hour": -0.0038,
+          "max_rise_1h_in_window": 0.01,
+          "max_rise_1h_at_utc": "2026-11-11 22:30:00+00:00",
+          "range_in_window_m": 0.06,
+          "rain_30m": 0.0,
+          "rain_1h": 0.0,
+          "rain_3h": 0.0,
+          "rain_24h": 0.0,
+          "max_rain_rate_mm_h_24h": 0.0,
+          "official_flood_status": "attention",
+          "data_freshness": "fresh",
+          "technical_data_confidence": 100,
+          "tags_rain_24h_mm": 0.0,
+          "tags_rain_1h_mm": 0.0,
+          "selection_reason": "highest_official_status_or_rising_trend",
+          "name_general": "Muitos Capões/Lagoa Vermelha",
+          "bacia": "RS - Rio Taquari-Antas",
+          "rio_nome": null,
+          "dist_serra_km": 125.73,
+          "variables": {
+            "stationCode": "DCRS-00110",
+            "startDate": "2026-11-11 18:09:34",
+            "endDate": "2026-11-12 18:09:34",
+            "interval": "MIN_5"
+          },
+          "bytes": 89241,
+          "elapsed_s": 0.646,
+          "total_count": 288
+        },
+        {
+          "codigo": "DCRS-00022",
+          "reasons": {},
+          "current_river_level": 237.36,
+          "last_river_ts_utc": "2026-11-12 21:05:00+00:00",
+          "delta_10m": -0.11,
+          "delta_30m": -0.09,
+          "delta_1h": 0.41,
+          "rise_rate_per_hour": 0.3961,
+          "max_rise_1h_in_window": 0.8,
+          "max_rise_1h_at_utc": "2026-11-12 20:45:00+00:00",
+          "range_in_window_m": 0.8,
+          "rain_30m": 4.6,
+          "rain_1h": 24.8,
+          "rain_3h": 34.2,
+          "rain_24h": 34.6,
+          "max_rain_rate_mm_h_24h": 129.3,
+          "official_flood_status": "normal",
+          "data_freshness": "fresh",
+          "technical_data_confidence": 100,
+          "tags_rain_24h_mm": 34.6,
+          "tags_rain_1h_mm": 24.8,
+          "selection_reason": "highest_rain_24h",
+          "name_general": "Santa Rosa - Pessegueirinho",
+          "bacia": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+          "rio_nome": null,
+          "dist_serra_km": 390.77,
+          "variables": {
+            "stationCode": "DCRS-00022",
+            "startDate": "2026-11-11 18:09:34",
+            "endDate": "2026-11-12 18:09:34",
+            "interval": "MIN_5"
+          },
+          "bytes": 89795,
+          "elapsed_s": 0.958,
+          "total_count": 288
+        }
+      ],
+      "quality": {
+        "DCRS-00004": {
+          "rows": 288,
+          "expected_blocks_approx": 288,
+          "completeness_pct": 100.0,
+          "first_ts_utc": "2026-11-11 21:10:00+00:00",
+          "last_ts_utc": "2026-11-12 21:05:00+00:00",
+          "gaps_over_1_5_interval": 0,
+          "duplicate_ts": 0,
+          "null_pct": {
+            "rio_nivel": 0.0,
+            "chuva_mm": 0.0,
+            "temp_media": 0.0,
+            "umid_rel": 0.0,
+            "pres_atmos": 0.0
+          },
+          "rio_nivel_max_identical_run_blocks": 25,
+          "rio_nivel_max_identical_run_hours": 2.08,
+          "rio_nivel_jumps_gt_0_5m_per_block": 0,
+          "negative_rain_blocks": 0
+        },
+        "DCRS-00001": {
+          "rows": 288,
+          "expected_blocks_approx": 288,
+          "completeness_pct": 100.0,
+          "first_ts_utc": "2026-11-11 21:10:00+00:00",
+          "last_ts_utc": "2026-11-12 21:05:00+00:00",
+          "gaps_over_1_5_interval": 0,
+          "duplicate_ts": 0,
+          "null_pct": {
+            "rio_nivel": 0.0,
+            "chuva_mm": 0.0,
+            "temp_media": 0.0,
+            "umid_rel": 0.0,
+            "pres_atmos": 0.0
+          },
+          "rio_nivel_max_identical_run_blocks": 63,
+          "rio_nivel_max_identical_run_hours": 5.25,
+          "rio_nivel_jumps_gt_0_5m_per_block": 0,
+          "negative_rain_blocks": 0
+        },
+        "DCRS-00002": {
+          "rows": 288,
+          "expected_blocks_approx": 288,
+          "completeness_pct": 100.0,
+          "first_ts_utc": "2026-11-11 21:10:00+00:00",
+          "last_ts_utc": "2026-11-12 21:05:00+00:00",
+          "gaps_over_1_5_interval": 0,
+          "duplicate_ts": 0,
+          "null_pct": {
+            "rio_nivel": 0.0,
+            "chuva_mm": 0.0,
+            "temp_media": 0.0,
+            "umid_rel": 0.0,
+            "pres_atmos": 0.0
+          },
+          "rio_nivel_max_identical_run_blocks": 56,
+          "rio_nivel_max_identical_run_hours": 4.67,
+          "rio_nivel_jumps_gt_0_5m_per_block": 0,
+          "negative_rain_blocks": 0
+        },
+        "DCRS-00110": {
+          "rows": 288,
+          "expected_blocks_approx": 288,
+          "completeness_pct": 100.0,
+          "first_ts_utc": "2026-11-11 21:10:00+00:00",
+          "last_ts_utc": "2026-11-12 21:05:00+00:00",
+          "gaps_over_1_5_interval": 0,
+          "duplicate_ts": 0,
+          "null_pct": {
+            "rio_nivel": 0.0,
+            "chuva_mm": 0.0,
+            "temp_media": 0.0,
+            "umid_rel": 0.0,
+            "pres_atmos": 0.0
+          },
+          "rio_nivel_max_identical_run_blocks": 76,
+          "rio_nivel_max_identical_run_hours": 6.33,
+          "rio_nivel_jumps_gt_0_5m_per_block": 0,
+          "negative_rain_blocks": 0
+        },
+        "DCRS-00022": {
+          "rows": 288,
+          "expected_blocks_approx": 288,
+          "completeness_pct": 100.0,
+          "first_ts_utc": "2026-11-11 21:10:00+00:00",
+          "last_ts_utc": "2026-11-12 21:05:00+00:00",
+          "gaps_over_1_5_interval": 0,
+          "duplicate_ts": 0,
+          "null_pct": {
+            "rio_nivel": 0.0,
+            "chuva_mm": 0.0,
+            "temp_media": 0.0,
+            "umid_rel": 0.0,
+            "pres_atmos": 0.0
+          },
+          "rio_nivel_max_identical_run_blocks": 62,
+          "rio_nivel_max_identical_run_hours": 5.17,
+          "rio_nivel_jumps_gt_0_5m_per_block": 0,
+          "negative_rain_blocks": 0
+        }
+      },
+      "limit_probe": {
+        "variables": {
+          "stationCode": "DCRS-00004",
+          "startDate": "2026-08-04 18:09:49",
+          "endDate": "2026-08-04 19:09:49",
+          "interval": "HOUR_1"
+        },
+        "http_status": 200,
+        "accepted": false,
+        "errors": [
+          {
+            "message": "Não é possível consultar dados anteriores a 2026-08-12 18:09:49. Consulte no máximo os últimos 3 meses.",
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "path": [
+              "historic"
+            ],
+            "extensions": {
+              "code": "BAD_REQUEST"
+            }
+          }
+        ],
+        "items": null
+      },
+      "rows": 1440
+    },
+    "serra_stations_within_km": 40.0,
+    "serra_station_count": 7,
+    "serra_with_river_value": 7,
+    "serra_with_rain_value": 6,
+    "stations_named_gramado_canela": []
+  },
+  "ssp": {
+    "status": "ok",
+    "discovery": {
+      "source_page": "https://ssp.rs.gov.br/dados-abertos",
+      "chosen": {
+        "text": "2026 (janeiro a setembro) (.zip 11,94MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+        "years": [
+          2026
+        ]
+      },
+      "download": {
+        "source_url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+        "final_url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+        "method": "GET",
+        "retrieved_at_utc": "2026-11-12T21:09:50.154076+00:00",
+        "http_status": 200,
+        "content_type": "application/zip",
+        "content_length": 12524194,
+        "sha256": "f87306dacea2d772ba7c26b56ad313f63d556b11783dde3184fe0b6d72a9fcc3",
+        "elapsed_s": 18.951,
+        "redirects": [],
+        "saved_to": "data/raw/ssp/2026-11-12/source.zip",
+        "request_body_sha256": null,
+        "attempts": 1,
+        "transient_errors": []
+      },
+      "zip_members": [
+        {
+          "member_name_in_zip": "SPJ_DADOS_ABERTOS_OCORRÊNCIAS_JAN_SET_2026 - Em 06.10.2026.csv",
+          "utf8_name_flag": true,
+          "extracted_to": "data/raw/ssp/2026-11-12/extracted/SPJ_DADOS_ABERTOS_OCORRÊNCIAS_JAN_SET_2026 - Em 06.10.2026.csv",
+          "compressed_size": 12523898,
+          "uncompressed_size": 123388616,
+          "zip_datetime": "2026-10-16T10:55:26",
+          "crc32": "d1046538",
+          "sha256": "0e3092881679f780994d624d2889428201119ea49173d2d21e89626d4424b369"
+        }
+      ]
+    },
+    "candidates_mensal": [
+      {
+        "text": "2026 (janeiro a setembro) (.zip 11,94MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip",
+        "years": [
+          2026
+        ]
+      },
+      {
+        "text": "2025 (janeiro a dezembro) (.zip 17,56 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202610/16112418-spj-dados-abertos-ocorrencias-jan-dez-2025-em-06-10-2026.zip",
+        "years": [
+          2025
+        ]
+      },
+      {
+        "text": "2024 (janeiro a dezembro) – atualizado em janeiro de 2026 (.zip 16,13 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202601/16132801-spj-dados-abertos-ocorrencias-jan-dez-2024-em-05-01-2026.zip",
+        "years": [
+          2024,
+          2026
+        ]
+      },
+      {
+        "text": "2023 (janeiro a dezembro) (.zip 16,42 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202501/20100119-2023-janeiro-a-dezembro.zip",
+        "years": [
+          2023
+        ]
+      },
+      {
+        "text": "2022 (de janeiro a dezembro) (.zip 15,86 MBytes)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202607/09152511-spj-dados-abertos-ocorrencias-jan-dez-2022-em-23-06-2026.zip",
+        "years": [
+          2022
+        ]
+      },
+      {
+        "text": "2021 (outubro a dezembro)",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202201/25080213-dados-abertos-ocorrencias-2022-01-ajustado-publicacao.csv",
+        "years": [
+          2021
+        ]
+      }
+    ],
+    "parse": {
+      "encoding": "latin-1",
+      "delimiter": ";",
+      "header_validation": {
+        "ok": true,
+        "observed_first13": [
+          "Sequência",
+          "Data Fato",
+          "Hora Fato",
+          "Grupo Fato",
+          "Tipo Enquadramento",
+          "Tipo Fato",
+          "Municipio Fato",
+          "Local Fato",
+          "Bairro",
+          "Quantidade Vítimas",
+          "Idade Vítima",
+          "Sexo Vítima",
+          "Cor Vítima"
+        ],
+        "expected_first13_folded": [
+          "SEQUENCIA",
+          "DATA FATO",
+          "HORA FATO",
+          "GRUPO FATO",
+          "TIPO ENQUADRAMENTO",
+          "TIPO FATO",
+          "MUNICIPIO FATO",
+          "LOCAL FATO",
+          "BAIRRO",
+          "QUANTIDADE VITIMAS",
+          "IDADE VITIMA",
+          "SEXO VITIMA",
+          "COR VITIMA"
+        ],
+        "total_header_cells": 112,
+        "extra_header_cells": [
+          "...",
+          "",
+          ""
+        ]
+      },
+      "row_width_distribution": {
+        "112": 567659
+      },
+      "data_rows": 567659,
+      "duplicate_full_rows_raw": 0,
+      "declared_period": [
+        "2026-01-01",
+        "2026-09-30"
+      ],
+      "extraction_date_in_name": "2026-10-06"
+    },
+    "parse_seconds": 30.8,
+    "columns_raw": 13,
+    "quality": {
+      "total_rows": 567659,
+      "duplicate_full_rows_raw": 0,
+      "duplicate_rows_ignoring_sequence_id": 1729,
+      "duplicate_rows_ignoring_sequence_id_pct": 0.3,
+      "municipality_null_pct": 0.0,
+      "date_null_pct": 0.0,
+      "time_null_pct": 0.0,
+      "category_null_pct": 0.0,
+      "neighborhood_null_pct": 19.47,
+      "victim_count_zero_pct": 18.9,
+      "victims_total": 502366,
+      "victim_age_null_pct": 0.06,
+      "victim_sex_null_pct": 0.12,
+      "victim_race_null_pct": 0.0,
+      "victim_race_sem_informacao_pct": 27.43,
+      "victim_age_126_count": 4,
+      "municipality_unique_count": 497,
+      "category_unique_count": 287,
+      "category_raw_unique_count": 287,
+      "neighborhood_unique_count_raw": 17271,
+      "neighborhood_unique_count_normalized": 11645,
+      "time_on_exact_hour_pct": 38.45,
+      "time_midnight_0000_or_0001_pct": 0.54,
+      "date_min": "2026-01-01",
+      "date_max": "2026-09-30",
+      "fact_type_values": {
+        "Consumado": 567659
+      },
+      "fact_group_values": {
+        "CRIMES": 532651,
+        "CONTRAVENCOES": 35008
+      },
+      "flag_counts": {
+        "neighborhood_empty": 110539,
+        "victim_count_missing": 13,
+        "age_gt_115": 3
+      },
+      "anomalies": {
+        "age_negative": 0,
+        "age_gt_115": 4,
+        "age_non_numeric": 0,
+        "date_future": 0,
+        "date_invalid": 0,
+        "date_outside_declared_period": 0,
+        "time_invalid": 0,
+        "municipality_empty": 0,
+        "category_empty": 0,
+        "victim_count_missing": 13,
+        "victim_count_mismatch": 0
+      }
+    },
+    "schema_profile": [
+      {
+        "raw_column": "Sequência",
+        "column": "occurrence_id",
+        "dtype_inferred": "integer",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 567659,
+        "sample_values": "567659, 1, 2, 3, 4"
+      },
+      {
+        "raw_column": "Data Fato",
+        "column": "occurrence_date_raw",
+        "dtype_inferred": "date(DD/MM/YYYY)",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 273,
+        "sample_values": "01/04/2026, 06/03/2026, 20/03/2026, 10/03/2026, 06/02/2026"
+      },
+      {
+        "raw_column": "Hora Fato",
+        "column": "occurrence_time_raw",
+        "dtype_inferred": "time(HH:MM:SS)",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 24274,
+        "sample_values": "10:00:00, 12:00:00, 15:00:00, 08:00:00, 14:00:00"
+      },
+      {
+        "raw_column": "Grupo Fato",
+        "column": "fact_group",
+        "dtype_inferred": "text",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": "CRIMES, CONTRAVENCOES"
+      },
+      {
+        "raw_column": "Tipo Enquadramento",
+        "column": "category_raw",
+        "dtype_inferred": "text",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 287,
+        "sample_values": "AMEACA, ESTELIONATO, OUTROS CRIMES, LESAO CORPORAL, LESAO CORPORAL CULPOSA DIRECAO VEIC AUTOMOTOR"
+      },
+      {
+        "raw_column": "Tipo Fato",
+        "column": "fact_type",
+        "dtype_inferred": "text",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": "Consumado"
+      },
+      {
+        "raw_column": "Municipio Fato",
+        "column": "municipality_raw",
+        "dtype_inferred": "text",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 497,
+        "sample_values": "PORTO ALEGRE, CAXIAS DO SUL, CANOAS, SANTA MARIA, PELOTAS"
+      },
+      {
+        "raw_column": "Local Fato",
+        "column": "place_type",
+        "dtype_inferred": "text",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 9,
+        "sample_values": "OUTROS, RESIDENCIA, VIA PUBLICA, ESTABELECIMENTO COMERCIAL, ETABELECIMENTO ENSINO"
+      },
+      {
+        "raw_column": "Bairro",
+        "column": "neighborhood_raw",
+        "dtype_inferred": "text",
+        "null_count": 110539,
+        "null_pct": 19.47,
+        "unique_count": 17271,
+        "sample_values": "Centro, CENTRO, Centro Histórico, São José, INTERIOR"
+      },
+      {
+        "raw_column": "Quantidade Vítimas",
+        "column": "victim_count",
+        "dtype_inferred": "decimal",
+        "null_count": 13,
+        "null_pct": 0.0,
+        "unique_count": 21,
+        "sample_values": "1.0, 0.0, 2.0, 3.0, 4.0"
+      },
+      {
+        "raw_column": "Idade Vítima",
+        "column": "victim_age",
+        "dtype_inferred": "decimal",
+        "null_count": 107611,
+        "null_pct": 18.96,
+        "unique_count": 100,
+        "sample_values": "43.0, 31.0, 44.0, 32.0, 37.0"
+      },
+      {
+        "raw_column": "Sexo Vítima",
+        "column": "victim_sex",
+        "dtype_inferred": "text",
+        "null_count": 107858,
+        "null_pct": 19.0,
+        "unique_count": 2,
+        "sample_values": "Feminino, Masculino"
+      },
+      {
+        "raw_column": "Cor Vítima",
+        "column": "victim_race",
+        "dtype_inferred": "text",
+        "null_count": 107324,
+        "null_pct": 18.91,
+        "unique_count": 6,
+        "sample_values": "Branca, Sem informação, Parda, Preta, Indígena"
+      }
+    ],
+    "victims": {
+      "occurrences_with_gt1_victim": 34739,
+      "max_victims_one_row": 34
+    },
+    "municipality_metrics": {
+      "GRAMADO": {
+        "municipality": "GRAMADO",
+        "occurrences_total": 2825,
+        "share_of_state_pct": 0.5,
+        "state_rank_by_volume": 44,
+        "occurrences_by_month": {
+          "2026-01": 303,
+          "2026-02": 281,
+          "2026-03": 329,
+          "2026-04": 327,
+          "2026-05": 323,
+          "2026-06": 273,
+          "2026-07": 329,
+          "2026-08": 327,
+          "2026-09": 333
+        },
+        "monthly_mean": 313.9,
+        "monthly_min": 273,
+        "monthly_max": 333,
+        "occurrences_by_category_top10": {
+          "AMEACA": 369,
+          "OUTROS CRIMES": 329,
+          "OUTRAS FRAUDES": 191,
+          "ESTELIONATO": 150,
+          "LESAO CORPORAL": 133,
+          "ESTELIONATO FRAUDE ELETRONICA": 125,
+          "FUGA DE LOCAL DE ACIDENTE - ART. 305": 112,
+          "LESAO CORPORAL CULPOSA DIRECAO VEIC AUTOMOTOR": 106,
+          "PERTURBACAO DO TRABALHO OU DO SOSSEGO ALHEIOS": 86,
+          "DANO": 76
+        },
+        "occurrences_by_group": {
+          "CRIMES": 2655,
+          "CONTRAVENCOES": 170
+        },
+        "occurrences_by_place_type": {
+          "OUTROS": 1367,
+          "RESIDENCIA": 637,
+          "VIA PUBLICA": 568,
+          "ESTABELECIMENTO COMERCIAL": 196,
+          "ETABELECIMENTO ENSINO": 23,
+          "HOSPITAIS/CLINICAS": 12,
+          "ESTABELECIMENTO DIVERSAO": 11,
+          "INTERIOR COLETIVOS": 9,
+          "METRO/RODOVIARIA": 2
+        },
+        "occurrences_by_weekday": {
+          "segunda": 406,
+          "terça": 415,
+          "quarta": 458,
+          "quinta": 451,
+          "sexta": 430,
+          "sábado": 353,
+          "domingo": 312
+        },
+        "occurrences_by_hour_bucket": {
+          "00-05": 232,
+          "06-11": 803,
+          "12-17": 1084,
+          "18-23": 706
+        },
+        "time_on_exact_hour_pct": 35.93,
+        "neighborhood_coverage_pct": 84.25,
+        "time_coverage_pct": 100.0,
+        "category_coverage_pct": 100.0,
+        "victim_sex_known_pct_of_occurrences_with_victim": 99.66,
+        "neighborhood_unique_raw": 204,
+        "neighborhood_unique_normalized": 138,
+        "flag_counts": {
+          "neighborhood_empty": 445
+        },
+        "occurrences_by_neighborhood_top10": {
+          "CENTRO": 509,
+          "VARZEA GRANDE": 192,
+          "VILA SUICA": 181,
+          "CARNIEL": 146,
+          "PLANALTO": 140,
+          "FLORESTA": 109,
+          "DUTRA": 89,
+          "LOTEAMENTO BELVEDERE": 80,
+          "VILA DO SOL": 69,
+          "BAIRRO BELVEREDE": 67
+        },
+        "last_month_vs_prev_mean_pct": 6.9
+      },
+      "CANELA": {
+        "municipality": "CANELA",
+        "occurrences_total": 3355,
+        "share_of_state_pct": 0.59,
+        "state_rank_by_volume": 39,
+        "occurrences_by_month": {
+          "2026-01": 367,
+          "2026-02": 374,
+          "2026-03": 450,
+          "2026-04": 380,
+          "2026-05": 339,
+          "2026-06": 351,
+          "2026-07": 384,
+          "2026-08": 385,
+          "2026-09": 325
+        },
+        "monthly_mean": 372.8,
+        "monthly_min": 325,
+        "monthly_max": 450,
+        "occurrences_by_category_top10": {
+          "AMEACA": 469,
+          "OUTROS CRIMES": 445,
+          "ESTELIONATO": 362,
+          "LESAO CORPORAL": 175,
+          "OUTRAS FRAUDES": 170,
+          "FURTO SIMPLES": 143,
+          "PERTURBACAO DO TRABALHO OU DO SOSSEGO ALHEIOS": 101,
+          "ESTELIONATO FRAUDE ELETRONICA": 80,
+          "VIOLENCIA PSICOLOGICA CONTRA MULHER ART 147B": 76,
+          "VIAS DE FATO": 65
+        },
+        "occurrences_by_group": {
+          "CRIMES": 3161,
+          "CONTRAVENCOES": 194
+        },
+        "occurrences_by_place_type": {
+          "VIA PUBLICA": 1300,
+          "RESIDENCIA": 917,
+          "OUTROS": 843,
+          "ESTABELECIMENTO COMERCIAL": 171,
+          "ETABELECIMENTO ENSINO": 78,
+          "HOSPITAIS/CLINICAS": 29,
+          "ESTABELECIMENTO DIVERSAO": 8,
+          "METRO/RODOVIARIA": 5,
+          "INTERIOR COLETIVOS": 4
+        },
+        "occurrences_by_weekday": {
+          "segunda": 557,
+          "terça": 514,
+          "quarta": 534,
+          "quinta": 549,
+          "sexta": 555,
+          "sábado": 324,
+          "domingo": 322
+        },
+        "occurrences_by_hour_bucket": {
+          "00-05": 263,
+          "06-11": 975,
+          "12-17": 1407,
+          "18-23": 710
+        },
+        "time_on_exact_hour_pct": 36.24,
+        "neighborhood_coverage_pct": 83.82,
+        "time_coverage_pct": 100.0,
+        "category_coverage_pct": 100.0,
+        "victim_sex_known_pct_of_occurrences_with_victim": 99.96,
+        "neighborhood_unique_raw": 158,
+        "neighborhood_unique_normalized": 103,
+        "flag_counts": {
+          "neighborhood_empty": 543
+        },
+        "occurrences_by_neighborhood_top10": {
+          "CENTRO": 980,
+          "EUGENIO FERREIRA": 178,
+          "SAO JOSE": 139,
+          "SAO RAFAEL": 130,
+          "SAO LUCAS": 104,
+          "DISTRITO INDUSTRIAL": 103,
+          "VILA MAGGI": 101,
+          "BECO DA ALEGRIA": 95,
+          "VILA LUIZA": 89,
+          "CANELINHA": 78
+        },
+        "last_month_vs_prev_mean_pct": -14.2
+      }
+    },
+    "municipality_name_variants_found": [
+      "CANELA",
+      "GRAMADO",
+      "GRAMADO DOS LOUREIROS",
+      "GRAMADO XAVIER"
+    ],
+    "top_categories_state": {
+      "AMEACA": 79765,
+      "ESTELIONATO": 60753,
+      "OUTROS CRIMES": 36264,
+      "LESAO CORPORAL": 31702,
+      "LESAO CORPORAL CULPOSA DIRECAO VEIC AUTOMOTOR": 22895,
+      "ESTELIONATO FRAUDE ELETRONICA": 17851,
+      "VIAS DE FATO": 17213,
+      "FURTO SIMPLES": 16200,
+      "PERTURBACAO DO TRABALHO OU DO SOSSEGO ALHEIOS": 13703,
+      "OUTRAS FRAUDES": 13506,
+      "ENTORPECENTES - TRAFICO": 12887,
+      "DESCUMPRIMENTO DE MEDIDA PROTETIVA DE URGENCIA": 12777,
+      "INJURIA": 12183,
+      "OUTROS FURTOS": 11568,
+      "DANO": 10780
+    },
+    "cross_validation": {
+      "months_compared": 9,
+      "rows": [
+        {
+          "mapping": "HOMICIDIO DOLOSO",
+          "indicator": "HOMICIDIO DOLOSO",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 663,
+          "indicator_count": 659,
+          "diff": 4,
+          "diff_pct": 0.6
+        },
+        {
+          "mapping": "HOMICIDIO DOLOSO",
+          "indicator": "HOMICIDIO DOLOSO",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 0,
+          "indicator_count": 1,
+          "diff": -1,
+          "diff_pct": -100.0
+        },
+        {
+          "mapping": "HOMICIDIO DOLOSO",
+          "indicator": "HOMICIDIO DOLOSO",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 4,
+          "indicator_count": 4,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "LATROCINIO",
+          "indicator": "LATROCINIO",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 27,
+          "indicator_count": 27,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "LATROCINIO",
+          "indicator": "LATROCINIO",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 0,
+          "indicator_count": 0,
+          "diff": 0,
+          "diff_pct": null
+        },
+        {
+          "mapping": "LATROCINIO",
+          "indicator": "LATROCINIO",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 0,
+          "indicator_count": 0,
+          "diff": 0,
+          "diff_pct": null
+        },
+        {
+          "mapping": "FURTOS (any category containing FURTO)",
+          "indicator": "FURTOS",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 79519,
+          "indicator_count": 75764,
+          "diff": 3755,
+          "diff_pct": 5.0
+        },
+        {
+          "mapping": "FURTOS (any category containing FURTO)",
+          "indicator": "FURTOS",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 290,
+          "indicator_count": 286,
+          "diff": 4,
+          "diff_pct": 1.4
+        },
+        {
+          "mapping": "FURTOS (any category containing FURTO)",
+          "indicator": "FURTOS",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 360,
+          "indicator_count": 354,
+          "diff": 6,
+          "diff_pct": 1.7
+        },
+        {
+          "mapping": "ABIGEATO",
+          "indicator": "ABIGEATO",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 2659,
+          "indicator_count": 2686,
+          "diff": -27,
+          "diff_pct": -1.0
+        },
+        {
+          "mapping": "ABIGEATO",
+          "indicator": "ABIGEATO",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 0,
+          "indicator_count": 0,
+          "diff": 0,
+          "diff_pct": null
+        },
+        {
+          "mapping": "ABIGEATO",
+          "indicator": "ABIGEATO",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 2,
+          "indicator_count": 2,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "FURTO DE VEICULO",
+          "indicator": "FURTO DE VEICULO",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 4172,
+          "indicator_count": 4174,
+          "diff": -2,
+          "diff_pct": -0.0
+        },
+        {
+          "mapping": "FURTO DE VEICULO",
+          "indicator": "FURTO DE VEICULO",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 5,
+          "indicator_count": 5,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "FURTO DE VEICULO",
+          "indicator": "FURTO DE VEICULO",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 8,
+          "indicator_count": 8,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "ROUBOS (any category containing ROUBO)",
+          "indicator": "ROUBOS",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 12086,
+          "indicator_count": 11023,
+          "diff": 1063,
+          "diff_pct": 9.6
+        },
+        {
+          "mapping": "ROUBOS (any category containing ROUBO)",
+          "indicator": "ROUBOS",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 4,
+          "indicator_count": 5,
+          "diff": -1,
+          "diff_pct": -20.0
+        },
+        {
+          "mapping": "ROUBOS (any category containing ROUBO)",
+          "indicator": "ROUBOS",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 6,
+          "indicator_count": 4,
+          "diff": 2,
+          "diff_pct": 50.0
+        },
+        {
+          "mapping": "ROUBO DE VEICULO",
+          "indicator": "ROUBO DE VEICULO",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 1101,
+          "indicator_count": 1101,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "ROUBO DE VEICULO",
+          "indicator": "ROUBO DE VEICULO",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 0,
+          "indicator_count": 0,
+          "diff": 0,
+          "diff_pct": null
+        },
+        {
+          "mapping": "ROUBO DE VEICULO",
+          "indicator": "ROUBO DE VEICULO",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 0,
+          "indicator_count": 0,
+          "diff": 0,
+          "diff_pct": null
+        },
+        {
+          "mapping": "ESTELIONATO (all ESTELIONATO*)",
+          "indicator": "ESTELIONATO",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 79774,
+          "indicator_count": 61275,
+          "diff": 18499,
+          "diff_pct": 30.2
+        },
+        {
+          "mapping": "ESTELIONATO (all ESTELIONATO*)",
+          "indicator": "ESTELIONATO",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 279,
+          "indicator_count": 154,
+          "diff": 125,
+          "diff_pct": 81.2
+        },
+        {
+          "mapping": "ESTELIONATO (all ESTELIONATO*)",
+          "indicator": "ESTELIONATO",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 446,
+          "indicator_count": 365,
+          "diff": 81,
+          "diff_pct": 22.2
+        },
+        {
+          "mapping": "ESTELIONATO (excl. FRAUDE ELETRONICA) [hypothesis]",
+          "indicator": "ESTELIONATO",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 61923,
+          "indicator_count": 61275,
+          "diff": 648,
+          "diff_pct": 1.1
+        },
+        {
+          "mapping": "ESTELIONATO (excl. FRAUDE ELETRONICA) [hypothesis]",
+          "indicator": "ESTELIONATO",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 154,
+          "indicator_count": 154,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "ESTELIONATO (excl. FRAUDE ELETRONICA) [hypothesis]",
+          "indicator": "ESTELIONATO",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 366,
+          "indicator_count": 365,
+          "diff": 1,
+          "diff_pct": 0.3
+        },
+        {
+          "mapping": "ENTORPECENTES - POSSE",
+          "indicator": "ENTORPECENTES - POSSE",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 4459,
+          "indicator_count": 4503,
+          "diff": -44,
+          "diff_pct": -1.0
+        },
+        {
+          "mapping": "ENTORPECENTES - POSSE",
+          "indicator": "ENTORPECENTES - POSSE",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 24,
+          "indicator_count": 24,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "ENTORPECENTES - POSSE",
+          "indicator": "ENTORPECENTES - POSSE",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 37,
+          "indicator_count": 37,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "ENTORPECENTES - TRAFICO",
+          "indicator": "ENTORPECENTES - TRAFICO",
+          "scope": "RS (state)",
+          "period_months": "1-9",
+          "microdata_count": 12887,
+          "indicator_count": 12912,
+          "diff": -25,
+          "diff_pct": -0.2
+        },
+        {
+          "mapping": "ENTORPECENTES - TRAFICO",
+          "indicator": "ENTORPECENTES - TRAFICO",
+          "scope": "GRAMADO",
+          "period_months": "1-9",
+          "microdata_count": 53,
+          "indicator_count": 53,
+          "diff": 0,
+          "diff_pct": 0.0
+        },
+        {
+          "mapping": "ENTORPECENTES - TRAFICO",
+          "indicator": "ENTORPECENTES - TRAFICO",
+          "scope": "CANELA",
+          "period_months": "1-9",
+          "microdata_count": 48,
+          "indicator_count": 48,
+          "diff": 0,
+          "diff_pct": 0.0
+        }
+      ],
+      "municipalities_in_indicator": 497
+    },
+    "indicators": {
+      "link": {
+        "text": "Indicadores criminais geral e por municípios de 2026 – atualizado em novembro de 2026",
+        "url": "https://ssp.rs.gov.br/upload/arquivos/202611/12155941-site-geral-e-municipios-out-2026-atualizado-em-05-nov-2026-dados-cvli-publicacao.xlsx",
+        "years": [
+          2026,
+          2026
+        ]
+      },
+      "record": {
+        "source_url": "https://ssp.rs.gov.br/upload/arquivos/202611/12155941-site-geral-e-municipios-out-2026-atualizado-em-05-nov-2026-dados-cvli-publicacao.xlsx",
+        "final_url": "https://ssp.rs.gov.br/upload/arquivos/202611/12155941-site-geral-e-municipios-out-2026-atualizado-em-05-nov-2026-dados-cvli-publicacao.xlsx",
+        "method": "GET",
+        "retrieved_at_utc": "2026-11-12T21:10:10.526908+00:00",
+        "http_status": 200,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "content_length": 419290,
+        "sha256": "6702f5df16717bb70bfeede54b6d02646093704d14bfaed7173c44af59e56c04",
+        "elapsed_s": 0.651,
+        "redirects": [],
+        "saved_to": "data/raw/ssp/2026-11-12/indicadores_2026.xlsx",
+        "request_body_sha256": null,
+        "attempts": 1,
+        "transient_errors": []
+      },
+      "year": 2026
+    },
+    "quarantine_rows": 16,
+    "extracted_bytes": 123388616
+  },
+  "run": {
+    "started_at": "2026-11-12T21:09:20.144888+00:00",
+    "finished_at": "2026-11-12T21:10:56.060270+00:00",
+    "duration_s": 95.9,
+    "run_date": "2026-11-12"
+  },
+  "_lag_days": 43
+}

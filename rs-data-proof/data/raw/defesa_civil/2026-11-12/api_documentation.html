@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>API de Dados Hidrometeorológicos — Defesa Civil RS</title><style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        /* Marca */
+        --navy: #040235;
+        --accent: #f26b2c;
+        --accent-2: #ff8a45;
+
+        /* Paleta semântica (ícones, links e estados) */
+        --blue-50: #eef5ff;
+        --blue-600: #1b4f72;
+        --teal-600: #0f6e56;
+        --amber-50: #fff4e6;
+        --amber-600: #9a5608;
+        --amber-800: #6d3905;
+        --green-600: #26a65b;
+        --gray-600: #566477;
+
+        /* Superfícies, texto e bordas */
+        --bg: #f5f7fb;
+        --bg-2: #ffffff;
+        --text: #07112d;
+        --text-2: #4d5870;
+
+        --border: rgba(4, 2, 53, 0.12);
+
+        /* Botões/abas estilo "chip" */
+        --chip-text: #2b3b4b;
+        --chip-border: #dbe3ef;
+        --chip-hover-bg: #eaf2ff;
+        --chip-active-bg: var(--blue-600);
+        --chip-active-text: #ffffff;
+
+        /* Layout */
+        --radius: 6px;
+        --radius-lg: 10px;
+        --font:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      }
+
+      html {
+        font-size: 16px;
+      }
+      body {
+        font-family: var(--font);
+        background:
+          linear-gradient(
+            180deg,
+            rgba(4, 2, 53, 0.035),
+            rgba(4, 2, 53, 0) 210px
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+
+      /* Layout */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Header */
+      header {
+        background: var(--navy);
+        border-bottom: 4px solid var(--accent);
+        box-shadow: 0 2px 10px rgba(4, 2, 53, 0.18);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .header-brand .shield {
+        width: 38px;
+        height: 38px;
+        background: var(--bg-2);
+        color: var(--navy);
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 2px rgba(242, 107, 44, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+      }
+      .header-brand .shield img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 5px;
+        display: block;
+      }
+      .header-brand .shield .shield-fallback {
+        display: none;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+      .header-brand .shield.has-fallback img {
+        display: none;
+      }
+      .header-brand .shield.has-fallback .shield-fallback {
+        display: flex;
+      }
+      .header-brand span {
+        font-weight: 600;
+        font-size: 15px;
+        color: #fff;
+      }
+      .header-brand small {
+        display: block;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.78);
+        font-weight: 400;
+      }
+      .status-pill {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: var(--navy);
+        border-radius: 2px;
+        padding: 8px 13px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green-600);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      /* Hero */
+      .hero {
+        background: var(--bg-2);
+        border: 1px solid var(--border);
+        border-top: 3px solid var(--accent);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 12px 30px rgba(4, 2, 53, 0.07);
+        padding: 2rem;
+        margin: 2rem 0 2.5rem;
+      }
+      .badge {
+        display: inline-block;
+        background: var(--navy);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 12px;
+        font-weight: 500;
+        padding: 5px 12px;
+        border-radius: 3px;
+        margin-bottom: 1rem;
+      }
+      .hero h1 {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 0.75rem;
+        color: var(--navy);
+      }
+      .hero p {
+        font-size: 16px;
+        color: var(--text-2);
+        max-width: 600px;
+      }
+
+      /* Sections */
+      section {
+        margin-bottom: 2.5rem;
+      }
+      .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--navy);
+        border-left: 4px solid var(--accent);
+        padding-left: 10px;
+      }
+      .section-title i {
+        color: var(--accent);
+      }
+      .desc {
+        font-size: 14px;
+        color: var(--text-2);
+        margin-bottom: 1rem;
+      }
+
+      /* Cards */
+      .card {
+        background: var(--bg-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 4px 14px rgba(4, 2, 53, 0.045);
+        padding: 1.1rem 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 0.35rem;
+        color: var(--navy);
+      }
+      .card p {
+        font-size: 13px;
+        color: var(--text-2);
+        line-height: 1.6;
+      }
+      .card-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      /* Ícones temáticos (substituem cores inline no HTML) */
+      .icon-blue {
+        color: var(--blue-600);
+      }
+      .icon-teal {
+        color: var(--teal-600);
+      }
+      .icon-amber {
+        color: var(--amber-600);
+      }
+      .icon-gray {
+        color: var(--gray-600);
+      }
+
+      /* Callout */
+      .callout {
+        background: var(--blue-50);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        padding: 0.9rem 1.1rem;
+        font-size: 13.5px;
+        color: var(--navy);
+        margin: 1rem 0;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .callout-warn {
+        background: var(--amber-50);
+        border-left-color: var(--accent-2);
+        color: var(--amber-800);
+      }
+      .callout i {
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      /* URL Box */
+      .url-box {
+        background: var(--bg-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: inset 0 0 0 1px rgba(4, 2, 53, 0.02);
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+      }
+      .url-box .url-text {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--navy);
+        word-break: break-all;
+        flex: 1;
+      }
+      .source-note {
+        background: var(--amber-50);
+        border: 1px solid rgba(242, 107, 44, 0.25);
+        border-left: 3px solid var(--accent);
+        border-radius: var(--radius-lg);
+        padding: 1rem 1.1rem;
+        margin-top: 1rem;
+      }
+      .source-note-title {
+        color: var(--navy);
+        font-size: 14px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 0.35rem;
+      }
+      .source-note p {
+        color: var(--text-2);
+        font-size: 13.5px;
+        line-height: 1.6;
+        margin-bottom: 0.75rem;
+      }
+      .source-note .url-box {
+        margin-top: 0;
+      }
+      .btn-link-map {
+        text-decoration: none;
+      }
+      .btn-link-map:hover {
+        text-decoration: none;
+      }
+
+      /* Botões / Abas */
+      .btn-copy,
+      .tab {
+        font-family: var(--font);
+        cursor: pointer;
+        background: var(--bg-2);
+        border: 1px solid var(--chip-border);
+        border-radius: var(--radius);
+        color: var(--chip-text);
+      }
+      .btn-copy {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 12px;
+        font-size: 12px;
+        white-space: nowrap;
+        transition: background 0.15s;
+      }
+      .tab {
+        padding: 6px 16px;
+        font-size: 13px;
+        transition: all 0.15s;
+      }
+      .btn-copy:hover,
+      .tab:hover {
+        background: var(--chip-hover-bg);
+        border-color: #c9d7ea;
+      }
+      .tab.active {
+        background: var(--chip-active-bg);
+        border-color: var(--chip-active-bg);
+        color: var(--chip-active-text);
+        font-weight: 600;
+      }
+
+      /* Steps */
+      .step {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        margin-bottom: 1.1rem;
+      }
+      .step-num {
+        min-width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--navy);
+        border: 1px solid var(--navy);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+      .step-body {
+        padding-top: 4px;
+      }
+      .step-body strong {
+        font-weight: 600;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 3px;
+      }
+      .step-body p {
+        font-size: 13px;
+        color: var(--text-2);
+      }
+
+      /* Tabs */
+      .tabs {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Code */
+      .code-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+      .code-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--navy);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .code-block {
+        background: #08062d;
+        color: #edf4ff;
+        border: 1px solid rgba(4, 2, 53, 0.22);
+        border-radius: var(--radius);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        padding: 1rem 1.25rem;
+        font-family: var(--mono);
+        font-size: 12.5px;
+        line-height: 1.85;
+        overflow-x: auto;
+        white-space: pre;
+      }
+
+      /* Tables */
+      .table-wrap {
+        overflow-x: auto;
+        margin-top: 0.5rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      th {
+        background: var(--navy);
+        color: #fff;
+        font-weight: 600;
+        text-align: left;
+        padding: 9px 14px;
+        border-bottom: 1px solid var(--navy);
+      }
+      td {
+        padding: 9px 14px;
+        background: var(--bg-2);
+        border-bottom: 1px solid var(--border);
+      }
+      tr:nth-child(even) td {
+        background: #f8fafd;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      code {
+        font-family: var(--mono);
+        font-size: 12px;
+        background: #eef3fa;
+        color: var(--navy);
+        padding: 2px 6px;
+        border-radius: 4px;
+        border: 1px solid #dbe4f0;
+      }
+
+      /* Metric grid */
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+        margin-top: 0.75rem;
+      }
+      .metric-card {
+        background: var(--bg-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 0.75rem 1rem;
+      }
+      .metric-card .m-label {
+        font-size: 11.5px;
+        color: var(--text-2);
+        margin-bottom: 5px;
+      }
+      .metric-card .m-value {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--navy);
+      }
+
+      /* Divider */
+      hr {
+        border: none;
+        border-top: 1px solid rgba(4, 2, 53, 0.1);
+        margin: 2.5rem 0;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--navy);
+        color: rgba(255, 255, 255, 0.75);
+        border-top: 4px solid var(--accent);
+        text-align: center;
+        padding: 2rem 1.5rem;
+        font-size: 13px;
+      }
+      footer strong {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      a {
+        color: #9a5608;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--accent-2);
+        text-decoration: underline;
+      }
+
+      @media (max-width: 560px) {
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+        .header-inner {
+          gap: 12px;
+        }
+        .status-pill {
+          padding: 6px 9px;
+          font-size: 11px;
+        }
+        .hero {
+          padding: 1.4rem;
+        }
+        .url-box {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .btn-copy,
+        .btn-link-map {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    
+      body { display: flex; flex-direction: column; }
+      main { flex: 1; min-width: 0; width: 100%; }
+      .page { min-width: 0; padding-bottom: 2.5rem; }
+      .page-body { font-size: 14px; color: var(--text-2); }
+      .page-body p { margin: .75rem 0; }
+      .page-body strong { color: var(--navy); }
+      .page-body h2 { margin: 2.5rem 0 1rem; scroll-margin-top: 105px; }
+      .page-body h3 { margin: 1.5rem 0 .75rem; font-size: 16px; color: var(--navy); }
+      .page-body ul, .page-body ol { padding-left: 1.5rem; margin: .6rem 0; }
+      .page-body li { padding-left: .15rem; }
+      .page-body li::marker { color: var(--accent); font-weight: 700; }
+      .page-body a, .page-body td { overflow-wrap: anywhere; }
+      .page-body code { overflow-wrap: anywhere; }
+      .table-wrap { margin: 1rem 0 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+      .table-wrap table { margin: 0; }
+      .table-wrap th { min-width: 110px; }
+      .table-wrap th strong { color: #fff; }
+      .table-wrap th code { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.2); }
+      .code-example { margin: 1rem 0 1.5rem; min-width: 0; }
+      .code-toolbar { display: flex; justify-content: flex-end; margin-bottom: .5rem; }
+      pre.code { margin: 0; padding: 1rem 1.25rem; background: #08062d; color: #edf4ff; border: 1px solid var(--border); border-radius: var(--radius); overflow: auto; max-height: 520px; white-space: pre; font-family: var(--mono); font-size: 12.5px; line-height: 1.85; tab-size: 2; }
+      pre.code > code { display: block; background: none; color: inherit; padding: 0; border: 0; font-size: inherit; font-family: inherit; white-space: pre !important; word-break: normal !important; overflow-wrap: normal; }
+      blockquote { background: var(--blue-50); border-left: 3px solid var(--accent); padding: 1rem; margin: 1rem 0; }
+      .header-brand .shield .shield-fallback { color: var(--navy); }
+      .status-pill { white-space: nowrap; }
+      .btn-copy:focus-visible, a:focus-visible, .table-wrap:focus-visible, pre:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+      @media (max-width: 560px) { .header-inner { flex-wrap: wrap; } .container, .header-inner { padding-left: 1rem; padding-right: 1rem; } .hero h1 { font-size: 25px; } .page-body { font-size: 14px; } .table-wrap table { min-width: 520px; } }
+      @media print { header { position: static; } .hero { box-shadow: none; } .code-toolbar, .status-pill { display: none; } pre.code { max-height: none; overflow: visible; white-space: pre-wrap; } pre.code > code { white-space: pre-wrap !important; overflow-wrap: anywhere; } .table-wrap { overflow: visible; } }
+</style></head><body>
+ <header>
+      <div class="header-inner">
+        <div class="header-brand">
+          <div class="shield">
+            <img
+              src="https://sistemas.defesacivil.rs.gov.br/defesa-civil.png"
+              alt="Logo da Defesa Civil RS"
+              onerror="
+                this.parentElement.classList.add('has-fallback');
+                this.remove();
+              "
+            />
+            <span class="shield-fallback" aria-hidden="true">DC</span>
+          </div>
+          <div>
+            <span>Defesa Civil RS</span>
+            <small>Rede Hidrometeorológica</small>
+          </div>
+        </div>
+        <div class="status-pill">
+          <div class="dot"></div>
+          API operacional
+        </div>
+      </div>
+    </header>
+        
+        
+        <main class="container"><article id="b5ae94f4-ee52-4bee-a278-b3c1087f97db" class="page sans"><div class="hero"><h1 class="page-title" dir="auto">API de Dados Hidrometeorológicos<br />da Defesa Civil do Estado do Rio Grande do Sul</h1></div><div class="page-body"><div style="display:contents" dir="auto"><h2 id="c61ac913-0722-439f-9679-ee00a3ba7938" class="section-title">Visão geral</h2></div><div style="display:contents" dir="auto"><p id="dcb06ebc-ef02-43ce-9af2-3992941f8800" class="">A API entrega os dados das estações da Defesa Civil RS em blocos de 5 minutos, por duas consultas GraphQL: <code>tags_data</code> (situação mais recente de cada estação) e <code>historic</code> (série de uma estação num período).</p></div><div style="display:contents" dir="ltr"><div class="table-wrap" tabindex="0" role="region" aria-label="Tabela de referência"><table id="cca35d43-3091-4381-b5e5-a18ce3d312ae" class="simple-table"><thead class="simple-table-header"><tr><th class="simple-table-header-color simple-table-header"><strong>Ambiente</strong></th><th class="simple-table-header-color simple-table-header"><strong>Endereço da API</strong></th></tr></thead><tbody><tr><td>Produção</td><td><code>https://redehidrometeorologica.defesacivil.rs.gov.br/graphql</code></td></tr></tbody></table></div></div><div style="display:contents" dir="auto"><p id="5b10c311-3622-482f-ac2a-adf5e923b771" class="">Pontos de atenção:</p></div><div style="display:contents" dir="auto"><ul id="539815de-8973-405a-bb3a-25059b7d8a74" class="bulleted-list"><li style="list-style-type:disc">Os dados são atualizados a cada 5 minutos e lidos com <code>tags_data</code>.</li></ul></div><div style="display:contents" dir="auto"><ul id="a0329138-2b0b-4113-ad3e-f714762b49bd" class="bulleted-list"><li style="list-style-type:disc"><strong>Consultas fixas.</strong> A API só aceita o texto exato das consultas deste guia. Pedir outros campos é recusado.</li></ul></div><div style="display:contents" dir="auto"><ul id="47841e1c-86f2-4997-83f2-7d3b0b73323f" class="bulleted-list"><li style="list-style-type:disc"><strong>Limite de uso.</strong> Cada endereço IP pode fazer até 120 requisições por minuto.</li></ul></div><div style="display:contents" dir="auto"><ul id="d428eb5b-21ee-495d-8eb1-ce1435d49eed" class="bulleted-list"><li style="list-style-type:disc"><strong>Limiares de rio.</strong> Cada estação traz o nível de alerta de inundação: normalidade, atenção, alerta ou inundação.</li></ul></div><div style="display:contents" dir="auto"><ul id="de573772-2dab-4885-9b74-c2cac16e46bd" class="bulleted-list"><li style="list-style-type:disc"><strong>Histórico limitado.</strong> A consulta <code>historic</code> só busca dados dos últimos 3 meses.</li></ul></div><div style="display:contents" dir="auto"><h2 id="c1644fac-4eb8-4042-8b35-55fd06ba2957" class="section-title">Preparando o Postman</h2></div><div style="display:contents" dir="auto"><p id="3adec347-5127-4194-bc05-7a6e1eea7505" class="">O Postman é o jeito mais simples de fazer as consultas sem programar.</p></div><div style="display:contents" dir="auto"><ol type="1" id="201fe31a-9df3-43a3-9ed1-ecb33be9b67a" class="numbered-list" start="1"><li>Instale o Postman: <a href="https://www.postman.com/downloads/">postman.com/downloads</a>.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="c19c2ac4-4e62-4c38-877f-f18127997ee5" class="numbered-list" start="2"><li>Abra o Postman e entre com sua conta, ou use o modo convidado.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3c00bb66-4de9-49e3-8ab2-b2647149fe26" class="numbered-list" start="3"><li>Clique em <strong>New</strong> (ou no <strong>+</strong> para abrir uma aba) e escolha <strong>GraphQL</strong>.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="e961906b-b580-43c8-bbd9-29422188d5f6" class="numbered-list" start="4"><li>No campo <strong>Enter URL</strong>, cole o endereço da API do ambiente que você vai usar (tabela acima).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="8970e3b4-bba4-4124-b623-85e845c7fd7b" class="numbered-list" start="5"><li>Copie uma das consultas deste guia, cole no campo <strong>Query</strong> e clique em <strong>Query</strong> (ou <strong>Send</strong>).</li></ol></div><div style="display:contents" dir="auto"><p id="fa365aca-35bb-44c9-98b8-f3606acc4210" class="">A API não publica o esquema (schema). Por isso o Postman não vai autocompletar os nomes dos campos e pode mostrar um aviso de que não conseguiu carregar o esquema. Também poderá ser ignorado bastando colar as consultas exatamente como estão aqui.</p></div><div style="display:contents" dir="auto"><h2 id="d61edfa9-151b-49e2-83d1-55f5b0775cc6" class="section-title">Regras de uso</h2></div><div style="display:contents" dir="auto"><p id="b80a9bb1-3025-4400-8c34-a46f30f5199d" class="">A API recusa qualquer consulta fora das duas deste guia e limita cada IP a 120 requisições por minuto.</p></div><div style="display:contents" dir="ltr"><div class="table-wrap" tabindex="0" role="region" aria-label="Tabela de referência"><table id="923fc590-0744-4b0c-89d9-e6a905e09504" class="simple-table"><thead class="simple-table-header"><tr><th class="simple-table-header-color simple-table-header"><strong>Regra</strong></th><th class="simple-table-header-color simple-table-header"><strong>Limite</strong></th><th class="simple-table-header-color simple-table-header"><strong>O que acontece se passar</strong></th></tr></thead><tbody><tr><td>Consultas permitidas</td><td>Só <code>Tags_data</code> e <code>Historic</code>, com o texto exato deste guia</td><td>Erro <code>QUERY_NOT_ALLOWED</code>, mensagem "Operação bloqueada."</td></tr><tr><td>Requisições por IP</td><td>120 por minuto</td><td>Erro "ThrottlerException: Too Many Requests" até o minuto virar</td></tr><tr><td>Cliente</td><td>Somente <code>casa-militar-defesa-civil-rs</code></td><td>Erro <code>FORBIDDEN</code></td></tr><tr><td>Período do histórico</td><td>Data inicial dentro dos últimos 3 meses</td><td>Erro <code>BAD_REQUEST</code> com a data mínima aceita</td></tr><tr><td>Formato de data</td><td><code>AAAA-MM-DD HH:MM:SS</code>, horário de Brasília</td><td>Erro <code>BAD_REQUEST</code>: "Datas inválidas"</td></tr></tbody></table></div></div><div style="display:contents" dir="auto"><p id="76e4c903-7706-47b5-8209-8bea2b2895f8" class="">O texto da consulta precisa ser o mesmo, campo por campo. Espaços, quebras de linha e o campo <code>__typename</code> não fazem diferença. Tirar ou acrescentar um campo, ou trocar a ordem dos campos, faz a consulta ser recusada.</p></div><div style="display:contents" dir="auto"><p id="6c96b5ae-45cc-46c8-a621-d111aafc9d93" class="">Na consulta <code>historic</code>, os valores que mudam (estação, datas e intervalo) vão na aba <strong>Variables</strong> do Postman, nunca dentro do texto da consulta.</p></div><div style="display:contents" dir="auto"><h2 id="f82ff39f-5868-4277-9f17-2c7dc5468995" class="section-title">Consulta tags_data (dados atuais)</h2></div><div style="display:contents" dir="auto"><p id="e458baa1-0ad4-4d21-b094-88435d40b60f" class="">A <code>tags_data</code> devolve a leitura mais recente de todas as 130 estações de uma vez. Cole o texto abaixo inteiro no campo <strong>Query</strong>, sem variáveis.</p></div><div style="display:contents" dir="auto"><div class="code-example"><div class="code-toolbar"><button type="button" class="btn-copy" data-copy="example-1" aria-label="Copiar exemplo 1">Copiar</button></div><div id="example-1"><pre id="eb83f1d7-811e-4b22-a3fd-98b31efa6450" class="code code-wrap"><code class="language-graphql" style="white-space:pre-wrap;word-break:break-all">query Tags_data {
+  tags_data(clients: [&quot;casa-militar-defesa-civil-rs&quot;]) {
+    qualle_meteorologia {
+      codigo
+      name {
+        prefix
+        general
+        local
+      }
+      show
+      timestamp
+      position {
+        bacia
+        latitude
+        longitude
+        regiao
+        altitude
+        filtros {
+          outros {
+            crepdec {
+              nome {
+                value
+              }
+              codigo {
+                value
+              }
+            }
+          }
+        }
+      }
+      data {
+        rio {
+          rio_alarmes {
+            inundacao {
+              ativo {
+                value
+              }
+              status {
+                value
+              }
+            }
+          }
+          rio_nome {
+            value
+          }
+          rio_nivel {
+            value
+          }
+          rio_nivel_tendencia {
+            value
+          }
+          rio_area_drenagem {
+            value
+          }
+          homologacao {
+            relacao {
+              valido {
+                value
+              }
+            }
+          }
+        }
+        chuva {
+          acumulado {
+            min005 {
+              value
+            }
+            h001 {
+              value
+            }
+            h003 {
+              value
+            }
+            h006 {
+              value
+            }
+            h012 {
+              value
+            }
+            h024 {
+              value
+            }
+            h048 {
+              value
+            }
+            h168 {
+              value
+            }
+          }
+          homologacao {
+            relacao {
+              valido {
+                value
+              }
+            }
+          }
+        }
+        pressaoatmos {
+          atual {
+            value
+          }
+          historico {
+            diaanterior {
+              media {
+                value
+              }
+            }
+            diaatual {
+              media {
+                value
+              }
+            }
+          }
+          tendencia {
+            value
+          }
+          homologacao {
+            relacao {
+              valido {
+                value
+              }
+            }
+          }
+        }
+        senstermica {
+          atual {
+            value
+          }
+          historico {
+            diaatual {
+              media {
+                value
+              }
+            }
+            diaanterior {
+              media {
+                value
+              }
+            }
+          }
+          tendencia {
+            value
+          }
+          homologacao {
+            relacao {
+              valido {
+                value
+              }
+            }
+          }
+        }
+        radiacaosolar {
+          atual {
+            value
+          }
+          homologacao {
+            relacao {
+              valido {
+                value
+              }
+            }
+          }
+        }
+        temperatura {
+          atual {
+            value
+          }
+          historico {
+            diaanterior {
+              media {
+                value
+              }
+            }
+            diaatual {
+              media {
+                value
+              }
+              maxima {
+                value
+              }
+              minima {
+                value
+              }
+            }
+          }
+          tendencia {
+            value
+          }
+          homologacao {
+            relacao {
+              valido {
+                value
+              }
+            }
+          }
+        }
+        umidade {
+          atual {
+            value
+          }
+          historico {
+            diaanterior {
+              media {
+                value
+              }
+            }
+            diaatual {
+              media {
+                value
+              }
+            }
+          }
+          tendencia {
+            value
+          }
+          homologacao {
+            relacao {
+              valido {
+                value
+              }
+            }
+          }
+        }
+        vento {
+          direcao {
+            value
+          }
+          velocidade_maxima {
+            value
+          }
+          velocidade_media {
+            value
+          }
+          homologacao {
+            relacao {
+              valido {
+                value
+              }
+            }
+          }
+        }
+      }
+      type
+      filter {
+        relacao {
+          tem_chuva_acumulada
+          tem_nivel_do_rio
+          tem_pressao_atmosferica
+          tem_sensacao_termica
+          tem_umidade
+          tem_vazao_do_rio
+          tem_vento
+        }
+      }
+      resource {
+        estacao {
+          estado {
+            manutencao {
+              value
+            }
+          }
+        }
+      }
+    }
+    proximaAtualizacaoEm
+  }
+}</code></pre></div></div></div><div style="display:contents" dir="auto"><p id="73a8308a-fd16-4dab-80b2-2d476761ef97" class="">Como ler a resposta:</p></div><div style="display:contents" dir="auto"><ul id="144414db-4198-4199-852a-713b2a8f73c7" class="bulleted-list"><li style="list-style-type:disc"><code>qualle_meteorologia</code> é a lista de estações. Procure a estação pelo <code>codigo</code>, por exemplo <code>DCRS-00001</code>.</li></ul></div><div style="display:contents" dir="auto"><ul id="a670fe24-a7f4-4713-8374-b7ef283c605a" class="bulleted-list"><li style="list-style-type:disc"><code>timestamp</code> é o início do bloco de 5 minutos da última leitura, em horário de Brasília (ex.: <code>2026-10-14T08:40:00.000</code>).</li></ul></div><div style="display:contents" dir="auto"><ul id="3d563068-1df3-4d4d-b9e6-d26ad2fb6d08" class="bulleted-list"><li style="list-style-type:disc"><code>value: null</code> quer dizer que a estação não mandou essa medida nos últimos 20 minutos.</li></ul></div><div style="display:contents" dir="auto"><ul id="2b2b16fa-7b7f-4c8c-a02d-44a21e83ca09" class="bulleted-list"><li style="list-style-type:disc"><code>proximaAtualizacaoEm</code> é o horário, em UTC, em que vale a pena consultar de novo.</li></ul></div><div style="display:contents" dir="auto"><ul id="e7b1186d-74f0-4d3b-9763-d80a4b706b98" class="bulleted-list"><li style="list-style-type:disc"><code>homologacao.relacao.valido</code> igual a <code>false</code> indica sensor com dado não homologado.</li></ul></div><div style="display:contents" dir="auto"><ul id="fc851500-0a26-4ea5-b79d-32749775fdef" class="bulleted-list"><li style="list-style-type:disc"><code>resource.estacao.estado.manutencao</code> igual a <code>true</code> indica estação em manutenção.</li></ul></div><div style="display:contents" dir="auto"><p id="8ab678db-0677-4f21-81cc-03b887e55c14" class="">Não existe filtro por estação nem por localização: a consulta sempre traz todas as estações. Os parâmetros <code>station</code> e <code>filters</code> do guia antigo são recusados.</p></div><div style="display:contents" dir="auto"><h2 id="8b10bb3d-14e2-45fc-bdb5-d54e7e0ade93" class="section-title">Consulta historic (série de uma estação)</h2></div><div style="display:contents" dir="auto"><p id="e776201a-aac1-4d53-b16b-c16f94162801" class="">A <code>historic</code> devolve as medidas de uma estação num período dos últimos 3 meses, agrupadas no intervalo escolhido e em ordem cronológica.</p></div><div style="display:contents" dir="auto"><p id="5c837a7f-3623-4a08-8597-4a58c4eac771" class="">No campo <strong>Query</strong>, cole sempre este texto, sem mudar nada:</p></div><div style="display:contents" dir="auto"><div class="code-example"><div class="code-toolbar"><button type="button" class="btn-copy" data-copy="example-2" aria-label="Copiar exemplo 2">Copiar</button></div><div id="example-2"><pre id="b5e9fa9d-cee5-415c-89e4-ef27aa0a5d50" class="code code-wrap"><code class="language-graphql" style="white-space:pre-wrap;word-break:break-all">query Historic($stationCode: String!, $startDate: String!, $endDate: String!, $interval: QueryInterval) {
+  historic(
+    system: Qualle_Hidrometeorologia
+    client: &quot;casa-militar-defesa-civil-rs&quot;
+    stationCode: $stationCode
+    startDate: $startDate
+    endDate: $endDate
+    interval: $interval
+    opts: { ordenacao: ASC }
+  )
+}</code></pre></div></div></div><div style="display:contents" dir="auto"><p id="1d0084fe-8061-4bbd-aa67-16c831f6c272" class="">Na aba <strong>Variables</strong>, informe a estação, o período e o intervalo:</p></div><div style="display:contents" dir="auto"><div class="code-example"><div class="code-toolbar"><button type="button" class="btn-copy" data-copy="example-3" aria-label="Copiar exemplo 3">Copiar</button></div><div id="example-3"><pre id="3a17e209-d499-4678-a279-24b8d04a889f" class="code code-wrap"><code class="language-json" style="white-space:pre-wrap;word-break:break-all">{
+  &quot;stationCode&quot;: &quot;DCRS-00001&quot;,
+  &quot;startDate&quot;: &quot;2026-10-13 12:00:00&quot;,
+  &quot;endDate&quot;: &quot;2026-10-13 18:00:00&quot;,
+  &quot;interval&quot;: &quot;HOUR_1&quot;
+}</code></pre></div></div></div><div style="display:contents" dir="ltr"><div class="table-wrap" tabindex="0" role="region" aria-label="Tabela de referência"><table id="86fb059c-2102-440f-b4e9-9b2d89cf0329" class="simple-table"><thead class="simple-table-header"><tr><th class="simple-table-header-color simple-table-header"><strong>Variável</strong></th><th class="simple-table-header-color simple-table-header"><strong>Obrigatória</strong></th><th class="simple-table-header-color simple-table-header"><strong>Como preencher</strong></th></tr></thead><tbody><tr><td><code>stationCode</code></td><td>sim</td><td>Código da estação, ex.: <code>DCRS-00001</code></td></tr><tr><td><code>startDate</code></td><td>sim</td><td><code>AAAA-MM-DD HH:MM:SS</code>, horário de Brasília, no máximo 3 meses atrás</td></tr><tr><td><code>endDate</code></td><td>sim</td><td>Mesmo formato. Se for depois de agora, a API usa o horário atual</td></tr><tr><td><code>interval</code></td><td>não</td><td><code>MIN_5</code>, <code>MIN_10</code>, <code>HOUR_1</code>, <code>HOUR_3</code>, <code>HOUR_6</code> ou <code>HOUR_12</code>. Sem ela, usa <code>MIN_5</code></td></tr></tbody></table></div></div><div style="display:contents" dir="auto"><p id="aeafdecb-1e51-42cc-a2b9-57558b47be05" class="">Exemplo de resposta (DCRS-00001, intervalo de 1 hora):</p></div><div style="display:contents" dir="auto"><div class="code-example"><div class="code-toolbar"><button type="button" class="btn-copy" data-copy="example-4" aria-label="Copiar exemplo 4">Copiar</button></div><div id="example-4"><pre id="3c52b6ab-98fa-423f-adca-637680a724f4" class="code code-wrap"><code class="language-json" style="white-space:pre-wrap;word-break:break-all">{
+  &quot;data&quot;: {
+    &quot;historic&quot;: {
+      &quot;items&quot;: [
+        {
+          &quot;ts&quot;: &quot;2026-10-14T09:00:00.000&quot;,
+          &quot;codigo&quot;: &quot;DCRS-00001&quot;,
+          &quot;rio_nivel&quot;: 27.24,
+          &quot;rio_variacao&quot;: 0,
+          &quot;chuva_mm&quot;: 0,
+          &quot;chuva_total&quot;: 0,
+          &quot;chuva_taxa_med&quot;: 0,
+          &quot;chuva_taxa_max&quot;: 0,
+          &quot;temp_media&quot;: 22.425,
+          &quot;sens_termica&quot;: 24.79,
+          &quot;umid_rel&quot;: 72.39,
+          &quot;pres_atmos&quot;: 1010.21,
+          &quot;vento_vel_med&quot;: 1.61,
+          &quot;vento_vel_max&quot;: 4.14,
+          &quot;vento_dir&quot;: 268.31,
+          &quot;radiacao&quot;: 250.75
+        }
+      ],
+      &quot;totalCount&quot;: 1
+    }
+  }
+}</code></pre></div></div></div><div style="display:contents" dir="auto"><p id="40c8b4b5-15f2-4491-aff6-544fd8ee0598" class=""><code>ts</code> é o horário do bloco em horário de Brasília e <code>totalCount</code> é o número de itens. Uma medida que a estação não tem vem como <code>null</code>. A mesma consulta repetida em menos de 30 segundos devolve a resposta guardada em cache.</p></div><div style="display:contents" dir="auto"><h2 id="70e65200-67c4-4780-975b-120544361951" class="section-title">Limiares de nível do rio</h2></div><div style="display:contents" dir="auto"><p id="8c5e5251-a415-4d6b-9d2f-f7fc995edb75" class="">Cada estação com sensor de rio traz em <code>data.rio.rio_alarmes.inundacao</code> a situação do nível em relação às cotas de inundação definidas pela Defesa Civil. A API compara a cota medida (<code>rio_nivel</code>) com as cotas de atenção, alerta e inundação de cada estação.</p></div><div style="display:contents" dir="ltr"><div class="table-wrap" tabindex="0" role="region" aria-label="Tabela de referência"><table id="81894417-0708-4452-b6ab-10c4cf8abfb0" class="simple-table"><thead class="simple-table-header"><tr><th class="simple-table-header-color simple-table-header"><strong><code>ativo</code></strong></th><th class="simple-table-header-color simple-table-header"><strong><code>status</code></strong></th><th class="simple-table-header-color simple-table-header"><strong>Situação</strong></th><th class="simple-table-header-color simple-table-header"><strong>Cor no mapa</strong></th></tr></thead><tbody><tr><td><code>true</code></td><td><code>0</code></td><td>Normalidade</td><td>verde <code>#69a82f</code></td></tr><tr><td><code>true</code></td><td><code>1</code></td><td>Atenção Inundação</td><td>amarelo <code>#faba00</code></td></tr><tr><td><code>true</code></td><td><code>2</code></td><td>Alerta Inundação</td><td>laranja <code>#e67819</code></td></tr><tr><td><code>true</code></td><td><code>3</code></td><td>Inundação</td><td>vermelho <code>#e20228</code></td></tr><tr><td><code>true</code></td><td><code>null</code></td><td>Sem leitura de nível recente</td><td>branco</td></tr><tr><td><code>false</code></td><td><code>0</code></td><td>Estação sem limiar cadastrado</td><td>branco</td></tr></tbody></table></div></div><div style="display:contents" dir="auto"><ul id="ee1ca62e-5695-4458-ba25-3b6e6316ec32" class="bulleted-list"><li style="list-style-type:disc">O <code>status</code> é o nível mais alto já atingido.</li></ul></div><div style="display:contents" dir="auto"><ul id="4e7f8ddf-6f9e-4dcf-bcd3-6f6baf11926f" class="bulleted-list"><li style="list-style-type:disc">Os valores das cotas de cada estação não fazem parte da consulta permitida. Hoje eles só aparecem no mapa do site, pela cor da estação.</li></ul></div><div style="display:contents" dir="auto"><h2 id="df91d63b-baa6-44df-b458-be954a0c8143" class="section-title">Ciclo de atualização</h2></div><div style="display:contents" dir="auto"><p id="1bee8b86-5aa4-4025-8888-b171c305a224" class="">Os dados mudam uma vez a cada 5 minutos, normalmente entre 1 e 2 minutos depois de cada marco (:00, :05, :10…). Consultar mais vezes do que isso não traz dado novo e gasta o limite de 120 requisições por minuto.</p></div><div style="display:contents" dir="auto"><h2 id="bc2dbbe6-32dc-4f02-844b-e1c4a94b8c1e" class="section-title">Dicionário</h2></div><div style="display:contents" dir="auto"><h3 id="7beada7a-893d-4a4f-9e65-8496bee71f48" class="">Métricas e unidades</h3></div><div style="display:contents" dir="ltr"><div class="table-wrap" tabindex="0" role="region" aria-label="Tabela de referência"><table id="afa63ff5-1717-4b34-8d51-18f82a517895" class="simple-table"><thead class="simple-table-header"><tr><th class="simple-table-header-color simple-table-header"><strong>Métrica</strong></th><th class="simple-table-header-color simple-table-header"><strong>Campo em <code>tags_data</code></strong></th><th class="simple-table-header-color simple-table-header"><strong>Campo em <code>historic</code></strong></th><th class="simple-table-header-color simple-table-header"><strong>Unidade</strong></th></tr></thead><tbody><tr><td>Nível do rio</td><td><code>rio.rio_nivel</code></td><td><code>rio_nivel</code></td><td>metro (m)</td></tr><tr><td>Variação do nível</td><td><code>rio.rio_nivel_tendencia</code></td><td><code>rio_variacao</code></td><td>metro (m)</td></tr><tr><td>Chuva</td><td><code>chuva.acumulado.*</code></td><td><code>chuva_mm</code> (no bloco), <code>chuva_total</code></td><td>milímetro (mm)</td></tr><tr><td>Intensidade da chuva</td><td>—</td><td><code>chuva_taxa_med</code>, <code>chuva_taxa_max</code></td><td>milímetro por hora (mm/h)</td></tr><tr><td>Temperatura</td><td><code>temperatura</code></td><td><code>temp_media</code></td><td>grau Celsius (°C)</td></tr><tr><td>Sensação térmica</td><td><code>senstermica</code></td><td><code>sens_termica</code></td><td>grau Celsius (°C)</td></tr><tr><td>Umidade relativa</td><td><code>umidade</code></td><td><code>umid_rel</code></td><td>por cento (%)</td></tr><tr><td>Pressão atmosférica</td><td><code>pressaoatmos</code></td><td><code>pres_atmos</code></td><td>hectopascal (hPa)</td></tr><tr><td>Vento: velocidade</td><td><code>vento.velocidade_media</code>, <code>vento.velocidade_maxima</code></td><td><code>vento_vel_med</code>, <code>vento_vel_max</code></td><td>quilômetro por hora (km/h)</td></tr><tr><td>Vento: direção</td><td><code>vento.direcao</code></td><td><code>vento_dir</code></td><td>grau (°), 0 = norte</td></tr><tr><td>Radiação solar</td><td><code>radiacaosolar</code></td><td><code>radiacao</code></td><td>watt por metro quadrado (W/m²)</td></tr></tbody></table></div></div><div style="display:contents" dir="auto"><p id="1ba40cda-dfe6-453a-800d-3f173fdaf25a" class="">Nas métricas de <code>tags_data</code>:</p></div><div style="display:contents" dir="auto"><ul id="0c5a2053-e9bb-4cef-929a-e0c2f0221845" class="bulleted-list"><li style="list-style-type:disc"><code>atual</code> é o valor do último bloco de 5 minutos.</li></ul></div><div style="display:contents" dir="auto"><ul id="7a897ca9-449b-46ed-898a-07706bfeeb13" class="bulleted-list"><li style="list-style-type:disc"><code>historico.diaatual</code> e <code>historico.diaanterior</code> trazem a média (e, na temperatura, a máxima e a mínima) de hoje e de ontem.</li></ul></div><div style="display:contents" dir="auto"><ul id="91a6c86d-4a72-48b9-afc3-e91cbdfee766" class="bulleted-list"><li style="list-style-type:disc"><code>tendencia</code> é o valor atual menos a média da última hora: positivo subindo, negativo descendo.</li></ul></div><div style="display:contents" dir="auto"><h3 id="3877fa09-edea-4663-a570-a3f0334df18c" class="">Intervalos da consulta <code>historic</code></h3></div><div style="display:contents" dir="ltr"><div class="table-wrap" tabindex="0" role="region" aria-label="Tabela de referência"><table id="1f946bc5-7d47-486e-a59b-615e6da06b80" class="simple-table"><thead class="simple-table-header"><tr><th class="simple-table-header-color simple-table-header"><strong>Valor de <code>interval</code></strong></th><th class="simple-table-header-color simple-table-header"><strong>Agrupamento</strong></th></tr></thead><tbody><tr><td><code>MIN_5</code></td><td>5 minutos</td></tr><tr><td><code>MIN_10</code></td><td>10 minutos (padrão)</td></tr><tr><td><code>HOUR_1</code></td><td>1 hora</td></tr><tr><td><code>HOUR_3</code></td><td>3 horas</td></tr><tr><td><code>HOUR_6</code></td><td>6 horas</td></tr><tr><td><code>HOUR_12</code></td><td>12 horas</td></tr></tbody></table></div></div></div></article></main>
+<footer>
+      <p>
+        Informações fornecidas pela <strong>MKS</strong> ·
+        Dados retirados da
+        <a
+          href="https://redehidrometeorologica.defesacivil.rs.gov.br/Mapa"
+          target="_blank"
+          rel="noopener noreferrer"
+          > Rede Hidrometeorológica</a>
+        · Disponibilizados pela
+        <strong>Defesa Civil do Estado do Rio Grande do Sul</strong> · Casa
+        Militar
+      </p>
+    </footer><div id="copy-status" class="sr-only" role="status" aria-live="polite"></div>
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', async function () {
+      var code = document.getElementById(button.dataset.copy).querySelector('code');
+      var copied = false;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(code.textContent);
+          copied = true;
+        } else {
+          var input = document.createElement('textarea');
+          input.value = code.textContent;
+          input.style.position = 'fixed'; input.style.opacity = '0';
+          document.body.appendChild(input); input.select();
+          try { copied = document.execCommand('copy'); } finally { input.remove(); button.focus(); }
+        }
+      } catch (error) { copied = false; }
+      button.textContent = copied ? 'Copiado!' : 'Selecione o código';
+      document.getElementById('copy-status').textContent = copied ? 'Exemplo copiado.' : 'Não foi possível copiar automaticamente. Selecione e copie o código.';
+      if (!copied) {
+        var range = document.createRange(); range.selectNodeContents(code);
+        var selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+      }
+      setTimeout(function () { button.textContent = 'Copiar'; }, 2500);
+    });
+  });
+</script>
+</body></html>

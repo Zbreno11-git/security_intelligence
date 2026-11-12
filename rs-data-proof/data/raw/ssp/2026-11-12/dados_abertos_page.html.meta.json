@@ -1,0 +1,16 @@
+{
+  "source_url": "https://ssp.rs.gov.br/dados-abertos",
+  "final_url": "https://ssp.rs.gov.br/dados-abertos",
+  "method": "GET",
+  "retrieved_at_utc": "2026-11-12T21:09:49.406763+00:00",
+  "http_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length": 87310,
+  "sha256": "961b9402c076fd496698d0de044d764ca9964e6bdeff4fccdc613ef87ecc7d33",
+  "elapsed_s": 0.733,
+  "redirects": [],
+  "saved_to": "data/raw/ssp/2026-11-12/dados_abertos_page.html",
+  "request_body_sha256": null,
+  "attempts": 1,
+  "transient_errors": []
+}

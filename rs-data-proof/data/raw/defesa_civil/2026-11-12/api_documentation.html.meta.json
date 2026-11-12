@@ -1,0 +1,16 @@
+{
+  "source_url": "https://sistemas.defesacivil.rs.gov.br/api-redehidrometeorologica",
+  "final_url": "https://sistemas.defesacivil.rs.gov.br/api-redehidrometeorologica",
+  "method": "GET",
+  "retrieved_at_utc": "2026-11-12T21:09:34.029525+00:00",
+  "http_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length": 46763,
+  "sha256": "737cbc03a1be0d35f49e1badb293d9dd96060eff48edca31eafb65be5feedfa1",
+  "elapsed_s": 0.308,
+  "redirects": [],
+  "saved_to": "data/raw/defesa_civil/2026-11-12/api_documentation.html",
+  "request_body_sha256": null,
+  "attempts": 1,
+  "transient_errors": []
+}

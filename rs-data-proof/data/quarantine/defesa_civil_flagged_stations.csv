@@ -1,0 +1,21 @@
+codigo,name_general,quality_flags,age_minutes,maintenance
+DCRS-00003,Araricá / Sapiranga / Taquara,rain_value_null,4.57,False
+DCRS-00025,Caraá,freshness_delayed,14.57,False
+DCRS-00027,Santa Maria - Arroio Cadena,rain_not_homologated,4.57,False
+DCRS-00028,Rio Pardo - Rio Jacuí,river_value_null,4.57,False
+DCRS-00033,Porto Alegre - Ipanema,river_value_null,4.57,False
+DCRS-00042,Piratini - Cerrito,freshness_delayed,14.57,False
+DCRS-00043,Três Forquilhas - Rio Pedras Brancas,river_value_null,4.57,False
+DCRS-00062,Pelotas - Arroio Pelotas,river_not_homologated,4.57,False
+DCRS-00064,São Gabriel,freshness_delayed,14.57,False
+DCRS-00071,Aratiba,river_not_homologated,4.57,False
+DCRS-00080,São Pedro do Sul/Santa Maria,rain_not_homologated,4.57,False
+DCRS-00098,Porto Lucena/Porto Xavier,river_value_null,4.57,False
+DCRS-00099,Iraí - Rio Uruguai,river_value_null,4.57,False
+DCRS-00103,Manoel Viana (H),rain_not_homologated,4.57,False
+DCRS-00104,Arroio do Meio/Lajeado (H),river_value_null,4.57,False
+DCRS-00108,Santa Cruz do Sul,freshness_delayed,14.57,False
+DCRS-00121,Guaporé / Anta Gorda,freshness_delayed,14.57,False
+DCRS-00122,Porto Alegre - Cristal,river_value_null,4.57,False
+DCRS-00123,Arroio do Meio - Rio Taquari,river_value_null,4.57,False
+DCRS-00129,,river_not_homologated|no_coordinates,4.57,False

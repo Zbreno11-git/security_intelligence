@@ -1,0 +1,8 @@
+codigo,name_general,bacia,rio_nome,dist_gramado_km,dist_canela_km,has_river_value,has_rain_value,rio_nivel_m,rain_h024_mm,official_status,freshness,technical_data_confidence
+DCRS-00004,Três Coroas,RS - Sinos,,15.03,12.82,True,True,68.91,0.0,normal,fresh,100
+DCRS-00001,Igrejinha,RS - Sinos,,23.01,23.28,True,True,27.23,0.0,normal,fresh,100
+DCRS-00002,Nova Hartz,RS - Sinos,,24.01,26.7,True,True,20.64,0.0,normal,fresh,100
+DCRS-00046,Picada Café,RS - Rio Caí,,27.39,33.22,True,True,65.72,0.0,normal,fresh,100
+DCRS-00075,Nova Petrópolis/Caxias do Sul,RS - Rio Caí,,28.55,33.93,True,True,60.34,0.0,normal,fresh,100
+DCRS-00085,Dois Irmãos,RS - Rio Caí,,31.98,36.94,True,True,105.66,0.0,normal,fresh,100
+DCRS-00003,Araricá / Sapiranga / Taquara,RS - Sinos,,35.33,38.19,True,False,5.59,,normal,fresh,100

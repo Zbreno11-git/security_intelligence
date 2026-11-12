@@ -1,0 +1,33 @@
+2026-11-12T21:09:20+0000 INFO main run.start run_date=2026-11-12 root=/app
+2026-11-12T21:09:21+0000 INFO main preflight url=https://sistemas.defesacivil.rs.gov.br/api-redehidrometeorologica ok=True status=200
+2026-11-12T21:09:23+0000 INFO main preflight url=https://ssp.rs.gov.br/dados-abertos ok=True status=200
+2026-11-12T21:09:25+0000 INFO main preflight url=https://www.ssp.rs.gov.br/indicadores-criminais ok=True status=200
+2026-11-12T21:09:34+0000 INFO main preflight url=https://www.ssp.rs.gov.br/dicionario-de-dados ok=True status=200
+2026-11-12T21:09:34+0000 INFO http fetch method=GET url=https://sistemas.defesacivil.rs.gov.br/api-redehidrometeorologica status=200 bytes=46763 elapsed_s=0.308 ctype=text/html
+2026-11-12T21:09:36+0000 INFO http fetch method=POST url=https://redehidrometeorologica.defesacivil.rs.gov.br/graphql status=200 bytes=318209 elapsed_s=1.759 ctype=application/json
+2026-11-12T21:09:36+0000 INFO defesa_civil.fetch tags_data status=200 stations=130 bytes=318209 elapsed_s=1.759 proximaAtualizacaoEm=2026-11-12T21:12:50.000Z
+2026-11-12T21:09:36+0000 INFO main defesa_civil.quality stations=130 stale=0 maintenance=0 river_null_pct=6.15
+2026-11-12T21:09:38+0000 INFO http fetch method=POST url=https://redehidrometeorologica.defesacivil.rs.gov.br/graphql status=200 bytes=90119 elapsed_s=0.928 ctype=application/json
+2026-11-12T21:09:38+0000 INFO defesa_civil.fetch historic station=DCRS-00004 items=288 totalCount=288 bytes=90119
+2026-11-12T21:09:40+0000 INFO http fetch method=POST url=https://redehidrometeorologica.defesacivil.rs.gov.br/graphql status=200 bytes=89135 elapsed_s=0.789 ctype=application/json
+2026-11-12T21:09:40+0000 INFO defesa_civil.fetch historic station=DCRS-00001 items=288 totalCount=288 bytes=89135
+2026-11-12T21:09:43+0000 INFO http fetch method=POST url=https://redehidrometeorologica.defesacivil.rs.gov.br/graphql status=200 bytes=88891 elapsed_s=0.721 ctype=application/json
+2026-11-12T21:09:43+0000 INFO defesa_civil.fetch historic station=DCRS-00002 items=288 totalCount=288 bytes=88891
+2026-11-12T21:09:45+0000 INFO http fetch method=POST url=https://redehidrometeorologica.defesacivil.rs.gov.br/graphql status=200 bytes=89241 elapsed_s=0.646 ctype=application/json
+2026-11-12T21:09:45+0000 INFO defesa_civil.fetch historic station=DCRS-00110 items=288 totalCount=288 bytes=89241
+2026-11-12T21:09:47+0000 INFO http fetch method=POST url=https://redehidrometeorologica.defesacivil.rs.gov.br/graphql status=200 bytes=89795 elapsed_s=0.958 ctype=application/json
+2026-11-12T21:09:47+0000 INFO defesa_civil.fetch historic station=DCRS-00022 items=288 totalCount=288 bytes=89795
+2026-11-12T21:09:49+0000 INFO http fetch method=POST url=https://redehidrometeorologica.defesacivil.rs.gov.br/graphql status=200 bytes=240 elapsed_s=0.149 ctype=application/json
+2026-11-12T21:09:49+0000 INFO defesa_civil.fetch historic.limit_probe accepted=False
+2026-11-12T21:09:50+0000 INFO http fetch method=GET url=https://ssp.rs.gov.br/dados-abertos status=200 bytes=87310 elapsed_s=0.733 ctype=text/html
+2026-11-12T21:09:50+0000 INFO ssp.fetch ssp.discover mensal=6 semestral=10 other=0
+2026-11-12T21:09:50+0000 INFO ssp.fetch ssp.latest text='2026 (janeiro a setembro) (.zip 11,94MBytes)' url=https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip
+2026-11-12T21:10:09+0000 INFO http fetch method=GET url=https://ssp.rs.gov.br/upload/arquivos/202610/16112425-spj-dados-abertos-ocorrencias-jan-set-2026-em-06-10-2026.zip status=200 bytes=12524194 elapsed_s=18.951 ctype=application/zip
+2026-11-12T21:10:09+0000 INFO ssp.fetch ssp.download bytes=12524194 sha256=f87306dacea2d772
+2026-11-12T21:10:10+0000 INFO http fetch method=GET url=https://www.ssp.rs.gov.br/indicadores-criminais status=200 bytes=93758 elapsed_s=0.876 ctype=text/html
+2026-11-12T21:10:11+0000 INFO http fetch method=GET url=https://ssp.rs.gov.br/upload/arquivos/202611/12155941-site-geral-e-municipios-out-2026-atualizado-em-05-nov-2026-dados-cvli-publicacao.xlsx status=200 bytes=419290 elapsed_s=0.651 ctype=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+2026-11-12T21:10:11+0000 INFO ssp.fetch ssp.indicators url=https://ssp.rs.gov.br/upload/arquivos/202611/12155941-site-geral-e-municipios-out-2026-atualizado-em-05-nov-2026-dados-cvli-publicacao.xlsx bytes=419290
+2026-11-12T21:10:41+0000 INFO ssp.normalize ssp.parse rows=567659 victims=502366 encoding=latin-1
+2026-11-12T21:10:45+0000 WARNING main ssp.quality age_gt_115=4
+2026-11-12T21:10:45+0000 WARNING main ssp.quality victim_count_missing=13
+2026-11-12T21:10:56+0000 INFO main run.finish result=GO_WITH_CAVEATS duration_s=95.9

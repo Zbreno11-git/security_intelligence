@@ -1,0 +1,106 @@
+{
+  "collected_at_utc": "2026-11-12T21:09:34.346759+00:00",
+  "proximaAtualizacaoEm": "2026-11-12T21:12:50.000Z",
+  "http": {
+    "http_status": 200,
+    "elapsed_s": 1.759,
+    "content_length": 318209,
+    "sha256": "4eb90df005bf69d19e86a96c41677dd26ae71681f9f43ed0acfc74365129d6e6",
+    "content_type": "application/json; charset=utf-8",
+    "attempts": 1
+  },
+  "query_drift": {
+    "tags_data": "identical",
+    "historic": "identical"
+  },
+  "total_stations": 130,
+  "station_types": {
+    "HidroMeteo": 130
+  },
+  "stations_with_river_sensor": 130,
+  "stations_with_river_level": 122,
+  "stations_with_rain_sensor": 130,
+  "stations_with_rain": 129,
+  "stations_with_lat_lon": 129,
+  "maintenance_count": 0,
+  "maintenance_percentage": 0.0,
+  "freshness_counts": {
+    "fresh": 125,
+    "delayed": 5
+  },
+  "stale_station_count": 0,
+  "stale_station_percentage": 0.0,
+  "age_minutes_median": 4.57,
+  "age_minutes_p95": 4.57,
+  "age_minutes_max": 14.57,
+  "river_level_missing_pct": 6.15,
+  "rain_1h_missing_pct": 0.77,
+  "rain_24h_missing_pct": 0.77,
+  "temperature_missing_pct": 0.0,
+  "non_homologated_river_count": 3,
+  "non_homologated_rain_count": 3,
+  "non_homologated_temp_count": 0,
+  "official_status_counts": {
+    "normal": 91,
+    "attention": 2,
+    "alert": 0,
+    "flood": 0,
+    "unavailable": 3,
+    "no_threshold": 34,
+    "no_river_alarm_data": 0
+  },
+  "technical_data_confidence_distribution": {
+    "100": 119,
+    "85": 8,
+    "80": 3
+  },
+  "duplicate_station_codes": 0,
+  "rain_negative_values": 0,
+  "rain_window_monotonic_violations": 0,
+  "missing_rio_nome": 130,
+  "missing_altitude": 130,
+  "history": {
+    "stations": [
+      "DCRS-00004",
+      "DCRS-00001",
+      "DCRS-00002",
+      "DCRS-00110",
+      "DCRS-00022"
+    ],
+    "rows": 1440,
+    "limit_probe": {
+      "variables": {
+        "stationCode": "DCRS-00004",
+        "startDate": "2026-08-04 18:09:49",
+        "endDate": "2026-08-04 19:09:49",
+        "interval": "HOUR_1"
+      },
+      "http_status": 200,
+      "accepted": false,
+      "errors": [
+        {
+          "message": "Não é possível consultar dados anteriores a 2026-08-12 18:09:49. Consulte no máximo os últimos 3 meses.",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ],
+          "path": [
+            "historic"
+          ],
+          "extensions": {
+            "code": "BAD_REQUEST"
+          }
+        }
+      ],
+      "items": null
+    }
+  },
+  "serra": {
+    "radius_km": 40.0,
+    "stations": 7,
+    "with_river_value": 7,
+    "with_rain_value": 6
+  }
+}

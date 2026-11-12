@@ -1,0 +1,16 @@
+{
+  "source_url": "https://ssp.rs.gov.br/upload/arquivos/202611/12155941-site-geral-e-municipios-out-2026-atualizado-em-05-nov-2026-dados-cvli-publicacao.xlsx",
+  "final_url": "https://ssp.rs.gov.br/upload/arquivos/202611/12155941-site-geral-e-municipios-out-2026-atualizado-em-05-nov-2026-dados-cvli-publicacao.xlsx",
+  "method": "GET",
+  "retrieved_at_utc": "2026-11-12T21:10:10.526908+00:00",
+  "http_status": 200,
+  "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "content_length": 419290,
+  "sha256": "6702f5df16717bb70bfeede54b6d02646093704d14bfaed7173c44af59e56c04",
+  "elapsed_s": 0.651,
+  "redirects": [],
+  "saved_to": "data/raw/ssp/2026-11-12/indicadores_2026.xlsx",
+  "request_body_sha256": null,
+  "attempts": 1,
+  "transient_errors": []
+}

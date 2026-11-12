@@ -1,0 +1,11 @@
+services:
+  rs-data-proof:
+    build: .
+    image: rs-data-proof
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    # Only needed behind a corporate/sandbox HTTPS proxy; empty values are ignored.
+    environment:
+      - HTTPS_PROXY=${HTTPS_PROXY:-}
+      - REQUESTS_CA_BUNDLE=${REQUESTS_CA_BUNDLE_IN_CONTAINER:-}
